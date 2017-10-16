@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -81,6 +82,25 @@ public class ProductDao {
 		preparedStatement.setDouble(1, price);
 		preparedStatement.setDouble(2, productId);
 		preparedStatement.executeUpdate();
+
+	}
+
+	public ArrayList<Product> getAllProducts() throws SQLException {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.products");
+		Product product = null;
+		ArrayList<Product> products = new ArrayList<>();
+		ResultSet set = preparedStatement.executeQuery();
+		while (set.next()) {
+			long id = set.getLong("id");
+			String productName = set.getString("name");
+			double productPrice = set.getDouble("price");
+			product = new Product(id, productName, productPrice);
+			products.add(product);
+
+		}
+
+		return products;
 
 	}
 
