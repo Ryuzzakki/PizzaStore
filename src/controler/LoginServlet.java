@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.UserException;
+import model.db.OrderDao;
 import model.db.UserDao;
 
 /**

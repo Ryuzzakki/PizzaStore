@@ -32,20 +32,19 @@
 			<td><%=p.getPrice()%> leva</td>
 			<td>
 			<form action="order" method="post">
-			<input type="submit" value="Buy!">
-			</form>
+			<input type="submit" value="Add to Cart!"></form>
 			</td>
 		</tr>
 
 		<%}%>
 
 	</table>
-
-
+	
 	<form action="logout" method="post">
-		<p>
-			<input type="submit" value="Logout"> <br>
-		<p>
+		<p><input type="submit" value="Logout"><br><p>
+	</form>
+	<form action="cart" method="post">
+		<p><input type="submit" value="MyCart"><br><p>
 	</form>
 
 </body>
