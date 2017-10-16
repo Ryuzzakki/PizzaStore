@@ -99,7 +99,6 @@ public class ProductDao {
 			products.add(product);
 
 		}
-
 		return products;
 
 	}

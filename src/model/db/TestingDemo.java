@@ -1,14 +1,16 @@
 package model.db;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import model.Product;
 import model.Restaurant;
 import model.User;
 import model.UserException;
 
 public class TestingDemo {
 
-	public static void main(String[] args) throws UserException {
+	public static void main(String[] args) throws UserException, SQLException {
 		Restaurant restaurant = null;
 		try {
 			restaurant = RestaurantDao.getInstance().getRestaurant(1);
@@ -19,7 +21,9 @@ public class TestingDemo {
 		System.out.println(restaurant.getId());
 		System.out.println(restaurant.getName());
 
-		User user = new User("ivo", "ivo", "safasf", "", "ivo@abv.bg");
+		ArrayList<Product> products = ProductDao.getInstance().getAllProducts();
+		System.out.println(products.size());
+		System.out.println(products.get(3).getName());
 
 	}
 

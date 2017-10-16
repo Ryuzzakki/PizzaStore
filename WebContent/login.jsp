@@ -16,5 +16,7 @@
 			<input type="submit" value="Login!"> <br>
 		<p>
 	</form>
+
+	<a href="http://localhost:8080/Dominos/register.jsp">Register here!</a>
 </body>
 </html>
