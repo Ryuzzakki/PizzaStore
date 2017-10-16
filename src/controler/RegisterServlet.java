@@ -44,9 +44,8 @@ public class RegisterServlet extends HttpServlet {
 				UserDao.getInstance().addAddressForUser(u.getId(), address);
 				response.sendRedirect("main.jsp");
 				return;
-			}
-			else {
-				
+			} else {
+				response.getWriter().println("Passwords does not match!");
 			}
 
 		} catch (Exception e) {

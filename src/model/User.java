@@ -139,7 +139,7 @@ public class User {
 
 	public void setNumber(String phone_number) throws UserException {
 		if ((phone_number.matches("[0-9]+")) && !phone_number.isEmpty() && !phone_number.equals("")
-				&& phone_number.length() < 10) {
+				&& phone_number.length() >= 4) {
 			this.phone_number = phone_number;
 		} else {
 			throw new UserException("Invalid number!");

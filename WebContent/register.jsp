@@ -16,9 +16,11 @@
 		Confirm Password : <br> <input type="password" name="passconfirm"><br>
 		Email: <br> <input type="text" name="email"> <br>
 		Phone: <br> <input type="text" name="phone"> <br>
-		Address: <br> <input type="text" name="address"> <br> 
-		
-		<p><input type="submit" value="Register!"> <br><p>
+		Address: <br> <input type="text" name="address"> <br>
+
+		<p>
+			<input type="submit" value="Register!"> <br>
+		<p>
 	</form>
 
 
