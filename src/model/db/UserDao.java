@@ -141,4 +141,24 @@ public class UserDao {
 		return false;
 	}
 
+	public User getUserByEmail(String userEmail) throws SQLException, UserException {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.users where email = ?");
+		preparedStatement.setString(1, userEmail);
+		User user = null;
+		ResultSet set = preparedStatement.executeQuery();
+		while (set.next()) {
+			long userId = set.getLong("id");
+			String firstName = set.getString("first_name");
+			String lastName = set.getString("last_name");
+			String password = set.getString("password");
+			String phone = set.getString("phone_number");
+			String email = set.getString("email");
+			user = new User(userId, firstName, lastName, password, phone, email);
+
+		}
+		return user;
+
+	}
+
 }

@@ -23,6 +23,12 @@ public class User {
 
 	}
 
+	public User(long id, String first_name, String last_name, String password, String phone_number, String email)
+			throws UserException {
+		this(first_name, last_name, password, phone_number, email);
+		this.id = id;
+	}
+
 	private static final int MIN_USERNAME_LENGTH = 2;
 	private static final int MAX_USERNAME_LENGTH = 20;
 	private static final int MIN_PASSWORD_LENGTH = 5;
