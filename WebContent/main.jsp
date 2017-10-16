@@ -31,7 +31,7 @@
 			<td><%=p.getName()%></td>
 			<td><%=p.getPrice()%> leva</td>
 			<td>
-			<form action="order" method="post">
+			<form action="addtocart" method="post">
 			<input type="submit" value="Add to Cart!"></form>
 			</td>
 		</tr>
