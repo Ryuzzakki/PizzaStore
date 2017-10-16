@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
 import model.db.UserDao;
 
 @WebServlet("/register")
@@ -29,10 +30,29 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			if (UserDao.getInstance().userExistsByEmail(email)) {
 				response.sendRedirect("existsuser.jsp");
+				return;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+		User u;
+		try {
+			if (pass.equals(confPass)) {
+				u = new User(fName, lName, pass, phone, email);
+				UserDao.getInstance().addUser(u);
+				UserDao.getInstance().addAddressForUser(u.getId(), address);
+				response.sendRedirect("main.jsp");
+				return;
+			}
+			else {
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
