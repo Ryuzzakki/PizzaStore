@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Form</title>
 </head>
 <body>
 	<h1>Pizza Store</h1>
@@ -12,15 +12,9 @@
 	<form action="login" method="post">
 		Email: <br> <input type="text" name="email"> <br>
 		Password : <br> <input type="password" name="pass"> <br>
-	
 		<p>
 			<input type="submit" value="Login!"> <br>
 		<p>
 	</form>
-
-
-
-
-
 </body>
 </html>

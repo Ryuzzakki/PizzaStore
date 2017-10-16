@@ -15,7 +15,7 @@ import model.db.UserDao;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -30,8 +30,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
 				response.sendRedirect("main.jsp");
 				return;
-			}
-			else {
+			} else {
 				response.sendRedirect("register.jsp");
 			}
 		} catch (SQLException | UserException e) {
