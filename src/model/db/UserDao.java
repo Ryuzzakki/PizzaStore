@@ -127,4 +127,17 @@ public class UserDao {
 
 	}
 
+	public boolean userExistsByEmail(String email) throws SQLException {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement preparedStatement = con.prepareStatement("select * from users where email=?");
+		preparedStatement.setString(1, email);
+
+		ResultSet set = preparedStatement.executeQuery();
+		if (set.next()) {
+			return true;
+		}
+
+		return false;
+	}
+
 }
