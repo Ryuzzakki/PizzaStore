@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 			if (UserDao.getInstance().userExists(email, pass)) {
 				request.getSession().setAttribute("logged", true);
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
-				response.sendRedirect("main.jsp");
+				response.sendRedirect("address.jsp");
 				return;
 			} else {
 				response.sendRedirect("register.jsp");

@@ -24,12 +24,10 @@ public class AddressSetServlet extends HttpServlet {
 
 		System.out.println(restaurant);
 		System.out.println(home);
-		
-		//TODO update sesion
-		
+
+		// TODO update sesion
+
 		response.sendRedirect("main.jsp");
-		
-		
 
 	}
 
