@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
 				return;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();//TODO Make page!
 		}
 
 		User u;
@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
 				u = new User(fName, lName, pass, phone, email);
 				UserDao.getInstance().addUser(u);
 				UserDao.getInstance().addAddressForUser(u.getId(), address);
-				response.sendRedirect("main.jsp");
+				response.getWriter().println("Successfull registration!");
 				return;
 			} else {
 				response.getWriter().println("Passwords does not match!");
