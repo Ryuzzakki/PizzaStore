@@ -27,13 +27,14 @@ public class UserDao {
 	public void addUser(User u) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"insert into users (first_name,last_name,password,email) values (?,?,?,?)",
+				"insert into users (first_name,last_name,password,phone_number,email) values (?,?,?,?,?)",
 				Statement.RETURN_GENERATED_KEYS);
 
 		preparedStatement.setString(1, u.getFirst_name());
 		preparedStatement.setString(2, u.getLast_name());
 		preparedStatement.setString(3, u.getPassword());
-		preparedStatement.setString(4, u.getEmail());
+		preparedStatement.setString(4, u.getPhone_number());
+		preparedStatement.setString(5, u.getEmail());
 		preparedStatement.executeUpdate();
 
 		ResultSet rs = preparedStatement.getGeneratedKeys();
