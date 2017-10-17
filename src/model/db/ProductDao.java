@@ -38,13 +38,8 @@ public class ProductDao {
 			String productName = set.getString("name");
 			double productPrice = set.getDouble("price");
 			product = new Product(id, productName, productPrice);
-
-		}
-		if (product != null) {
-			return product;
 		}
 		return product;
-
 	}
 
 	public long createEmptyProduct() throws SQLException {
