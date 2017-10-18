@@ -19,15 +19,17 @@
 
 	<table border="1">
 		<tr>
-			<th>Id</th>
 			<th>Name</th>
 			<th>Price</th>
 		</tr>
 		<c:forEach items="${applicationScope.products}" var="product">
 			<tr>
-				<td><c:out value="${ product.id }"></c:out></td>
+
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
+				<c:set var="productId" value="${ product.id }" scope="session" />
+				<td><img src="productPic"></td>
+
 			</tr>
 		</c:forEach>
 	</table>
@@ -47,7 +49,7 @@
 	</form>
 	<br>
 
-	<img src="avatar" >
+	<img src="avatar">
 
 </body>
 </html>

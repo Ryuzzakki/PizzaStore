@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProductPictureServlet
  */
-@WebServlet("/ProductPictureServlet")
+@WebServlet("/productPic")
 public class ProductPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
 	}
 
 }
