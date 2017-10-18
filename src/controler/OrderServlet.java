@@ -16,8 +16,8 @@ public class OrderServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO make
-		response.getWriter().append("Successfull add!");
+		String id = request.getParameter("productId");
+		System.out.println(id);
 	}
 
 }
