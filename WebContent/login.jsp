@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <title>Login Form</title>
 </head>
 <body>
+
+
+
 	<h1>Pizza Store</h1>
 	<h3>Login here!</h3>
 	<form action="login" method="post">

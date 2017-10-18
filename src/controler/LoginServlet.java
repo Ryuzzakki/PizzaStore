@@ -2,15 +2,19 @@ package controler;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Product;
 import model.UserException;
 import model.db.OrderDao;
+import model.db.ProductDao;
 import model.db.UserDao;
 
 /**
@@ -27,12 +31,24 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			if (UserDao.getInstance().userExists(email, pass)) {
+				//session scope setting to be logged
 				request.getSession().setAttribute("logged", true);
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
-				response.sendRedirect("address.jsp");
+				
+				
+				//app scope setting all products
+				ServletContext application = getServletConfig().getServletContext();
+				synchronized (application) {
+					if (application.getAttribute("products") == null) {
+						ArrayList<Product> products = ProductDao.getInstance().getAllProducts();
+						application.setAttribute("products", products);
+					}
+				}
+				request.getRequestDispatcher("address.jsp").forward(request, response);
 				return;
 			} else {
-				response.sendRedirect("register.jsp");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				return;
 			}
 		} catch (SQLException | UserException e) {
 			e.printStackTrace();
