@@ -25,7 +25,7 @@ public class TestingDemo {
 		System.out.println(products.size());
 		System.out.println(products.get(3).getName());
 
-		User user = new User("Testingas", "Idfasf", "zxcvbn2", "31231232132", "abfz@abv.abv");
+		User user = new User("Dimcho", "Hristov", "123456789", "31231232132", "the_hhh@abv.bg");
 		UserDao.getInstance().addUser(user);
 		System.out.println(user.getId());
 

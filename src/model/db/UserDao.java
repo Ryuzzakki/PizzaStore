@@ -161,4 +161,11 @@ public class UserDao {
 
 	}
 
+	public void insertAvatar(String userEmail, String url) throws SQLException {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement preparedStatement = con.prepareStatement("insert into users(avatarUrl) values (?) where email = ?");
+		preparedStatement.setString(1, url);
+		preparedStatement.setString(2, userEmail);
+		preparedStatement.executeUpdate();
+	}
 }

@@ -10,6 +10,7 @@ public class User {
 	private String password;
 	private String phone_number;
 	private String email;
+	private String avatarUrl;
 	private HashSet<String> address = new HashSet<>();
 	private HashSet<Order> orders = new HashSet<>();
 
@@ -49,7 +50,13 @@ public class User {
 	public String getLast_name() {
 		return last_name;
 	}
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
 
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
+	}
 	public String getPassword() {
 		return password;
 	}
