@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			if (UserDao.getInstance().userExists(email, pass)) {
-				// session scope setting to be logged
+			
 				request.getSession().setAttribute("logged", true);
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
 				request.getRequestDispatcher("address.jsp").forward(request, response);

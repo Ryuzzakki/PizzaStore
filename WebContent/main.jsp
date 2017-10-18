@@ -29,8 +29,8 @@
 				<td><c:out value="${ product.price } "></c:out></td>
 				<c:set var="productId" value="${ product.id }" scope="session" />
 				<td><img src="productPic"></td>
-
-			</tr>
+				
+							</tr>
 		</c:forEach>
 	</table>
 
