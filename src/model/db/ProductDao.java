@@ -37,7 +37,9 @@ public class ProductDao {
 			long id = set.getLong("id");
 			String productName = set.getString("name");
 			double productPrice = set.getDouble("price");
+			String productPic = set.getString("pictureUrl");
 			product = new Product(id, productName, productPrice);
+			product.setProductPicture(productPic);
 		}
 		return product;
 	}

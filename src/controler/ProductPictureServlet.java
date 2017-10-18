@@ -27,18 +27,16 @@ public class ProductPictureServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		long productId = (long) req.getSession().getAttribute("productId");
 		String pictureUrl = null;
+
 		try {
 			pictureUrl = (ProductDao.getInstance().getProduct(productId)).getProductPicture();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		// fix
-
 		if (pictureUrl == null || pictureUrl.isEmpty()) {
 			pictureUrl = "defaultPizza.png";
 		}
-
 		File myFile = new File(PICTURE_URL + pictureUrl);
 		OutputStream out = resp.getOutputStream();
 		Path path = myFile.toPath();
