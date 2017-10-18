@@ -4,27 +4,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="styles.css">
 <title>Register</title>
 </head>
 <body>
+	<div id="login-box">
+		<div class="left">
+			<h2>Pizza Store</h2>
+			<h1>Sign up</h1>
+			<form action="register" method="post">
+				<input type="text" name="first_name" placeholder="First name" /> <input
+					type="text" name="last_name" placeholder="Last name" /> <input
+					type="password" name="pass" placeholder="Password" /> <input
+					type="password" name="passconfirm" placeholder="Retype password" />
+				<input type="text" name="email" placeholder="E-mail" /> <input
+					type="text" name="phone" placeholder="Phone" /> <input type="text"
+					name="address" placeholder="Address" /> <input type="submit"
+					name="signup_submit" value="Sign me up" />
+			</form>
+		</div>
+		<div class="right">
+			<span class="loginwith">Sign in with<br />social network
+			</span>
+			<button class="social-signin facebook">Log in with facebook</button>
 
+			<h2>Already have an account?</h2>
+			<form action="login.jsp">
+				<input type="submit" value="Login here!">
+			</form>
 
-	<h1>Pizza Store</h1>
-	<h3>Register here!</h3>
-	<form action="register" method="post">
-		First name:<br> <input type="text" name="first_name"><br>
-		Last name:<br> <input type="text" name="last_name"> <br>
-		Password : <br> <input type="password" name="pass"> <br>
-		Confirm Password : <br> <input type="password" name="passconfirm"><br>
-		Email: <br> <input type="text" name="email"> <br>
-		Phone: <br> <input type="text" name="phone"> <br>
-		Address: <br> <input type="text" name="address"> <br>
-
-		<p>
-			<input type="submit" value="Register!"> <br>
-		<p>
-	</form>
-
+		</div>
+		<div class="or">OR</div>
+	</div>
 
 
 </body>
