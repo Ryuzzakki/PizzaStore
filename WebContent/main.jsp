@@ -51,8 +51,7 @@
 
 
 
-	<img src="file:///D:/upload/users/"
-		alt="Nqma avatar">
+	<img src="file:///D:/upload/users/" alt="Nqma avatar">
 
 </body>
 </html>
