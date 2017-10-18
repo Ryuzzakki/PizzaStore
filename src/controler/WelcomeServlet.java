@@ -44,7 +44,6 @@ public class WelcomeServlet extends HttpServlet {
 			logged = (boolean) request.getSession().getAttribute("logged");
 		}
 		if (logged) {
-
 			request.getRequestDispatcher("main.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("login.jsp").forward(request, response);

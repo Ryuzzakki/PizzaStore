@@ -28,8 +28,9 @@
 				<td><c:out value="${ product.id }"></c:out></td>
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<td><img src="/upload/products/defaultPizza.png" alt="defaultPizza"></td>
-				
+				<td><img src="/upload/products/defaultPizza.png"
+					alt="defaultPizza"></td>
+
 			</tr>
 		</c:forEach>
 	</table>
@@ -40,6 +41,13 @@
 	<form action="cart" method="post">
 		<input type="submit" value="MyCart"><br>
 	</form>
+<br>
+	<form action="avatar" method="post" enctype="multipart/form-data">
+				<input type="file" name="avatar"><br> <input
+			type="submit" value="Upload Avatar"><br>
+	</form>
+<br>
+	<img id="avatar" src="avatar">
 
 </body>
 </html>

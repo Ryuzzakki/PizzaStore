@@ -33,18 +33,18 @@ public class RegisterServlet extends HttpServlet {
 				return;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();//TODO Make page!
+			e.printStackTrace();// TODO Make page!
 		}
 
 		User u;
 		try {
 			if (pass.equals(confPass)) {
 				u = new User(fName, lName, pass, phone, email);
-				
+
 				UserDao.getInstance().addUser(u);
 				UserDao.getInstance().addAddressForUser(u.getId(), address);
-				
-								response.getWriter().println("Successfull registration!");
+
+				response.getWriter().println("Successfull registration!");
 				return;
 			} else {
 				response.getWriter().println("Passwords does not match!");
