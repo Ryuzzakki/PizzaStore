@@ -27,10 +27,11 @@
 
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<c:set var="productId" value="${ product.id }" scope="session" />
 				<td><img src="productPic"></td>
-				
-							</tr>
+				<td><form action="addtocart" method="post">
+						<input type="submit" name="login_submit" value="Add to Cart" />
+					</form></td>
+			</tr>
 		</c:forEach>
 	</table>
 

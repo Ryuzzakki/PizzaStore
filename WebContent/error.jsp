@@ -9,8 +9,8 @@
 </head>
 <body>
 
-		<div class="left">
-			<h1>Something happened :(</h1>
-		</div>
+	<div class="left">
+		<h1>Something happened :(</h1>
+	</div>
 </body>
 </html>

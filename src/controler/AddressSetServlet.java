@@ -20,10 +20,7 @@ public class AddressSetServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String choice = request.getParameter("address");
-		System.out.println(choice);
-
-		// TODO update sesion
-
+		request.getSession().setAttribute("address", choice);
 		response.sendRedirect("main.jsp");
 
 	}

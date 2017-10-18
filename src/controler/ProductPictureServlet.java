@@ -25,11 +25,12 @@ public class ProductPictureServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		long productId = (long) req.getSession().getAttribute("productId");
+		// String productId = req.getParameter("id");
+		// somehow get current product picture url from jsp
 		String pictureUrl = null;
 
 		try {
-			pictureUrl = (ProductDao.getInstance().getProduct(productId)).getProductPicture();
+			pictureUrl = (ProductDao.getInstance().getProduct(3l)).getProductPicture();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
