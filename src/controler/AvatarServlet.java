@@ -59,7 +59,9 @@ public class AvatarServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User u = (User) req.getSession().getAttribute("user");
+
 		String avatar = u.getAvatarUrl();
+		// fix
 
 		if (avatar == null) {
 			avatar = "default.jpeg";

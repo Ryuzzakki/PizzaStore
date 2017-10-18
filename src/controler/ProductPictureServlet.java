@@ -1,11 +1,19 @@
 package controler;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.db.ProductDao;
 
 /**
  * Servlet implementation class ProductPictureServlet
@@ -13,11 +21,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/productPic")
 public class ProductPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static final String PICTURE_URL = "D:/upload/products/";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		long productId = (long) req.getSession().getAttribute("productId");
+		String pictureUrl = null;
+		try {
+			pictureUrl = (ProductDao.getInstance().getProduct(productId)).getProductPicture();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// fix
+
+		if (pictureUrl == null || pictureUrl.isEmpty()) {
+			pictureUrl = "defaultPizza.png";
+		}
+
+		File myFile = new File(PICTURE_URL + pictureUrl);
+		OutputStream out = resp.getOutputStream();
+		Path path = myFile.toPath();
+		Files.copy(path, out);
+		out.flush();
+
 	}
 
 }
