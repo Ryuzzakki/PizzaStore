@@ -29,6 +29,20 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 
+		// app scope setting all products
+		ServletContext application = getServletConfig().getServletContext();
+		synchronized (application) {
+			if (application.getAttribute("products") == null) {
+				ArrayList<Product> products = new ArrayList<>();
+				try {
+					products = ProductDao.getInstance().getAllProducts();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				application.setAttribute("products", products);
+			}
+		}
+
 		try {
 			if (UserDao.getInstance().userExists(email, pass)) {
 				// session scope setting to be logged
@@ -41,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}
 		} catch (SQLException | UserException e) {
-			e.printStackTrace();
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 
 	}

@@ -18,7 +18,7 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.getSession().invalidate();
-		response.getWriter().println("You logged out!");
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 
 	}
 

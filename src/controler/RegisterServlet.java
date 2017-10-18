@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
 				return;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();// TODO Make page!
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 
 		User u;
@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 
 	}
