@@ -19,11 +19,8 @@ public class AddressSetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		boolean restaurant = request.getParameter("rest") != null;
-		boolean home = request.getParameter("home") != null;
-
-		System.out.println(restaurant);
-		System.out.println(home);
+		String choice = request.getParameter("address");
+		System.out.println(choice);
 
 		// TODO update sesion
 

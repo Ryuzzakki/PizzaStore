@@ -28,7 +28,8 @@
 				<td><c:out value="${ product.id }"></c:out></td>
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<td><img src="<c:url value="${book.img}"/>"/></td>
+				<td><img src="/upload/products/defaultPizza.png" alt="defaultPizza"></td>
+				
 			</tr>
 		</c:forEach>
 	</table>

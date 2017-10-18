@@ -44,6 +44,7 @@ public class Product {
 	public void setIngredients(HashSet<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
+
 	public String getProductPicture() {
 		return productPicture;
 	}
