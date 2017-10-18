@@ -8,6 +8,7 @@ public class Product {
 	private String name;
 	private double price;
 	private HashSet<Ingredient> ingredients = new HashSet<>();
+	private String productPicture;
 
 	public Product(String name, double price) {
 		this.name = name;
@@ -42,6 +43,9 @@ public class Product {
 
 	public void setIngredients(HashSet<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+	public String getProductPicture() {
+		return productPicture;
 	}
 
 	@Override
@@ -82,7 +86,5 @@ public class Product {
 			return false;
 		return true;
 	}
-	
-	
 
 }

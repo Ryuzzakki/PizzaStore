@@ -7,6 +7,8 @@
 <title>Register</title>
 </head>
 <body>
+
+
 	<h1>Pizza Store</h1>
 	<h3>Register here!</h3>
 	<form action="register" method="post">

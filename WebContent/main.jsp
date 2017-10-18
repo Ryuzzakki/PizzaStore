@@ -2,6 +2,7 @@
 <%@page import="model.db.ProductDao"%>
 <%@page import="model.User"%>
 <%@page import="model.Product"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,40 +12,32 @@
 <title>Main</title>
 </head>
 <body>
-	<%
-		String name = "Stranger";
-		User user = null;
-		user = (User) request.getSession().getAttribute("user");
-		if (user != null) {
-			name = user.getFirst_name() + " " + user.getLast_name();
-		}
-		ArrayList<Product> products = ProductDao.getInstance().getAllProducts();
-	%>
-	<h1>
-		Hello
-		<%=name%></h1>
 
-	<table>
-		<%for (Product p : products) {%>
+	<c:if test="${ sessionScope.user == null }">
+		<c:redirect url="login.jsp"></c:redirect>
+	</c:if>
+
+	<table border="1">
 		<tr>
-			<td><%=p.getId()%></td>
-			<td><%=p.getName()%></td>
-			<td><%=p.getPrice()%> leva</td>
-			<td>
-			<form action="addtocart" method="post">
-			<input type="submit" value="Add to Cart!"></form>
-			</td>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
 		</tr>
-
-		<%}%>
-
+		<c:forEach items="${applicationScope.products}" var="product">
+			<tr>
+				<td><c:out value="${ product.id }"></c:out></td>
+				<td><c:out value="${ product.name }"></c:out></td>
+				<td><c:out value="${ product.price } "></c:out></td>
+				<td><img src="<c:url value="${book.img}"/>"/></td>
+			</tr>
+		</c:forEach>
 	</table>
-	
+
 	<form action="logout" method="post">
-		<p><input type="submit" value="Logout"><br><p>
+		<input type="submit" value="Logout"><br>
 	</form>
 	<form action="cart" method="post">
-		<p><input type="submit" value="MyCart"><br><p>
+		<input type="submit" value="MyCart"><br>
 	</form>
 
 </body>

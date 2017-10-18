@@ -9,9 +9,6 @@
 <title>Login Form</title>
 </head>
 <body>
-
-
-
 	<h1>Pizza Store</h1>
 	<h3>Login here!</h3>
 	<form action="login" method="post">

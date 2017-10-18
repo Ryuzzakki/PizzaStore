@@ -31,19 +31,9 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			if (UserDao.getInstance().userExists(email, pass)) {
-				//session scope setting to be logged
+				// session scope setting to be logged
 				request.getSession().setAttribute("logged", true);
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
-				
-				
-				//app scope setting all products
-				ServletContext application = getServletConfig().getServletContext();
-				synchronized (application) {
-					if (application.getAttribute("products") == null) {
-						ArrayList<Product> products = ProductDao.getInstance().getAllProducts();
-						application.setAttribute("products", products);
-					}
-				}
 				request.getRequestDispatcher("address.jsp").forward(request, response);
 				return;
 			} else {
