@@ -24,6 +24,7 @@ import model.db.UserDao;
 @MultipartConfig
 public class AvatarServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	public static final String AVATAR_URL = "D:/upload/users/";
 
 	@Override
