@@ -28,7 +28,7 @@
 				<td><c:out value="${ product.id }"></c:out></td>
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<td><img src="/upload/products/defaultPizza.png"
+				<td><img src="file:///D:/upload/products/defaultPizza.png"
 					alt="defaultPizza"></td>
 
 			</tr>
@@ -41,13 +41,18 @@
 	<form action="cart" method="post">
 		<input type="submit" value="MyCart"><br>
 	</form>
-<br>
+	<br>
+
 	<form action="avatar" method="post" enctype="multipart/form-data">
-				<input type="file" name="avatar"><br> <input
+		<input type="file" name="avatar"><br> <input
 			type="submit" value="Upload Avatar"><br>
 	</form>
-<br>
-	<img id="avatar" src="avatar">
+	<br>
+
+
+
+	<img src="file:///D:/upload/users/"
+		alt="Nqma avatar">
 
 </body>
 </html>

@@ -7,9 +7,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import model.User;
 import model.db.UserDao;
 
 @WebServlet("/avatar")
+@MultipartConfig
 public class AvatarServlet extends HttpServlet {
 
 	public static final String AVATAR_URL = "D:/upload/users/";
@@ -28,7 +30,7 @@ public class AvatarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
 		String email = user.getEmail();
-		
+
 		Part avatarPart = request.getPart("avatar");
 		InputStream fis = avatarPart.getInputStream();
 		File myFile = new File(AVATAR_URL + email + ".jpg");
@@ -46,24 +48,13 @@ public class AvatarServlet extends HttpServlet {
 		String avatarUrl = email + ".jpg";
 		request.getSession().setAttribute("avatar", avatarUrl);
 
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		User u = (User) request.getSession().getAttribute("user");
-		String avatar = u.getAvatarUrl();
-		if (avatar == null) {
-			avatar = "default.jpg";
+		try {
+			UserDao.getInstance().insertAvatar(user.getEmail(), avatarUrl);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		File myFile = new File(AvatarServlet.AVATAR_URL + avatar);
+		request.getRequestDispatcher("main.jsp").forward(request, resp);
 
-		try (OutputStream out = response.getOutputStream()) {
-			Path path = myFile.toPath();
-			Files.copy(path, out);
-			out.flush();
-		} catch (IOException e) {
-			System.out.println("ops");
-		}
 	}
 
 }
