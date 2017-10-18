@@ -40,9 +40,11 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			if (pass.equals(confPass)) {
 				u = new User(fName, lName, pass, phone, email);
+				
 				UserDao.getInstance().addUser(u);
 				UserDao.getInstance().addAddressForUser(u.getId(), address);
-				response.getWriter().println("Successfull registration!");
+				
+								response.getWriter().println("Successfull registration!");
 				return;
 			} else {
 				response.getWriter().println("Passwords does not match!");

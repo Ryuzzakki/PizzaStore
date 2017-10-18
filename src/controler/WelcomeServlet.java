@@ -45,9 +45,9 @@ public class WelcomeServlet extends HttpServlet {
 		}
 		if (logged) {
 
-			response.sendRedirect("main.jsp");
+			request.getRequestDispatcher("main.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("login.jsp");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
 
