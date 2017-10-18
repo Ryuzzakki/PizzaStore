@@ -29,11 +29,10 @@ public class AvatarServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		User user = (User) request.getSession().getAttribute("user");
-		String email = user.getEmail();
 
 		Part avatarPart = request.getPart("avatar");
 		InputStream fis = avatarPart.getInputStream();
-		File myFile = new File(AVATAR_URL + email + ".jpg");
+		File myFile = new File(AVATAR_URL + user.getFirst_name() + ".jpg");
 		if (!myFile.exists()) {
 			myFile.createNewFile();
 		}
@@ -45,15 +44,31 @@ public class AvatarServlet extends HttpServlet {
 		}
 		fis.close();
 		fos.close();
-		String avatarUrl = email + ".jpg";
+		String avatarUrl = user.getFirst_name() + ".jpg";
 		request.getSession().setAttribute("avatar", avatarUrl);
-
 		try {
 			UserDao.getInstance().insertAvatar(user.getEmail(), avatarUrl);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher("main.jsp").forward(request, resp);
+
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		User u = (User) req.getSession().getAttribute("user");
+		String avatar = u.getAvatarUrl();
+
+		if (avatar == null) {
+			avatar = "default.jpeg";
+		}
+
+		File myFile = new File(AVATAR_URL + avatar);
+		OutputStream out = resp.getOutputStream();
+		Path path = myFile.toPath();
+		Files.copy(path, out);
+		out.flush();
 
 	}
 

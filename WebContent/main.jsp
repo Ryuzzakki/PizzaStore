@@ -28,9 +28,6 @@
 				<td><c:out value="${ product.id }"></c:out></td>
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<td><img src="file:///D:/upload/products/defaultPizza.png"
-					alt="defaultPizza"></td>
-
 			</tr>
 		</c:forEach>
 	</table>
@@ -38,6 +35,7 @@
 	<form action="logout" method="post">
 		<input type="submit" value="Logout"><br>
 	</form>
+
 	<form action="cart" method="post">
 		<input type="submit" value="MyCart"><br>
 	</form>
@@ -49,9 +47,7 @@
 	</form>
 	<br>
 
-
-
-	<img src="file:///D:/upload/users/" alt="Nqma avatar">
+	<img src="avatar" >
 
 </body>
 </html>

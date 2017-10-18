@@ -154,7 +154,9 @@ public class UserDao {
 			String password = set.getString("password");
 			String phone = set.getString("phone_number");
 			String email = set.getString("email");
+			String avatarUrl = set.getString("avatarUrl");
 			user = new User(userId, firstName, lastName, password, phone, email);
+			user.setAvatarUrl(avatarUrl);
 
 		}
 		return user;
@@ -163,7 +165,8 @@ public class UserDao {
 
 	public void insertAvatar(String userEmail, String url) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("UPDATE pizza_store.users SET avatarUrl=? WHERE email=?");
+		PreparedStatement preparedStatement = con
+				.prepareStatement("UPDATE pizza_store.users SET avatarUrl=? WHERE email=?");
 		preparedStatement.setString(1, url);
 		preparedStatement.setString(2, userEmail);
 		preparedStatement.executeUpdate();
