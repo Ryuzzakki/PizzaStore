@@ -10,7 +10,7 @@ public class Order {
 	private Restaurant restaurant;
 	private double total_price;
 	private LocalDateTime order_date;
-	private HashMap<Product, Integer> products;
+	private HashMap<Product, Integer> products = new HashMap<>();
 
 	public Order(User user, Restaurant restaurant, double total_price, LocalDateTime order_date,
 			HashMap<Product, Integer> products) {
@@ -27,6 +27,15 @@ public class Order {
 		this.total_price = total_price;
 		this.order_date = order_date;
 		this.products = products;
+	}
+
+	public Order(long id, User user, Restaurant restaurant, double total_price, LocalDateTime order_date) {
+		this.id = id;
+		this.user = user;
+		this.restaurant = restaurant;
+		this.total_price = total_price;
+		this.order_date = order_date;
+
 	}
 
 	public long getId() {

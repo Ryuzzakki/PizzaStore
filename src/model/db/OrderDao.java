@@ -103,10 +103,25 @@ public class OrderDao {
 
 	}
 
-	public Order getOrderById(long id) {
+	public Order getOrderById(long id) throws SQLException, UserException {
 		Connection con = DBManager.getInstance().getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.orders where user_id = ?");
-		preparedStatement.setLong(1, user_id);
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.orders where id  =?");
+		preparedStatement.setLong(1, id);
+
+		ResultSet set = preparedStatement.executeQuery();
+		Order order = null;
+		while (set.next()) {
+			long orderId = set.getLong("id");
+			long userId = set.getLong("user_id");
+			long restorantId = set.getLong("restaurant_id");
+			double totalPrice = set.getDouble("total_price");
+			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
+			Order order = new Order(userId, UserDao.getInstance().getUser(userId),
+					RestaurantDao.getInstance().getRestaurant(restorantId), totalPrice, dateTime);
+
+		}
+		return order;
+
 	}
 
 }
