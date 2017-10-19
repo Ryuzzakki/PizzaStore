@@ -77,5 +77,6 @@ public class CartServlet extends HttpServlet {
 		}
 		req.setAttribute("productsInCart", map);
 		req.getRequestDispatcher("mycart.jsp").forward(req, resp);
+
 	}
 }
