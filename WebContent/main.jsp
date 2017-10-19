@@ -31,8 +31,8 @@
 				<td><c:out value="${ product.price } "></c:out></td>
 				<td><img src="productPic"></td>
 				<td><form action="addtocart" method="post">
-						<input type="hidden" name = "productId" value= "${ product.id }"/>
-						<input type="submit" name="login_submit" value="Add to Cart" />
+						<input type="hidden" name="productId" value="${ product.id }" /> <input
+							type="submit" name="login_submit" value="Add to Cart" />
 					</form></td>
 			</tr>
 		</c:forEach>
