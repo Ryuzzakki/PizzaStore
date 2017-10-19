@@ -13,15 +13,24 @@
 </head>
 <body>
 
+	<c:if test="${ sessionScope.user == null }">
+		<c:redirect url="login.jsp"></c:redirect>
+	</c:if>
+
+	<jsp:include page="header.jsp"></jsp:include>
+
+
 	<table border="1">
 		<tr>
 			<th>Name</th>
 			<th>Price</th>
+			<th>Quantity</th>
 		</tr>
 		<c:forEach var="product" items="${requestScope.productsInCart}">
 			<tr>
 				<td><c:out value="${ product.key.name }"></c:out></td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
+				<td><c:out value="${ product.value }"></c:out></td>
 			</tr>
 		</c:forEach>
 	</table>

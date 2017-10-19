@@ -57,15 +57,15 @@ public class OrderDetailsDao {
 			long product_id = set.getLong("product_id");
 			int productQuantity = set.getInt("quantity");
 			Product product = ProductDao.getInstance().getProduct(product_id);
-			// if (products.containsKey(product)) {
-			// int quant = products.get(product);
-			// products.put(product, quant + productQuantity);
-			// }
-			products.put(product, productQuantity);
+			if (products.containsKey(product)) {
+				int quant = products.get(product);
+				products.put(product, quant + productQuantity);
+			} else {
+				products.put(product, productQuantity);
 
+			}
 		}
 		return products;
-
 	}
-	
+
 }

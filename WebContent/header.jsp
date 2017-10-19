@@ -17,7 +17,7 @@
 				<input type="submit" value="Contacts">
 			</form>
 			<form class="navi" action="main.jsp">
-				<input type="submit" value="Products on sale">
+				<input type="submit" value="Products">
 			</form>
 			<form class="navi" action="orders.jsp">
 				<input type="submit" value="View My orders">
