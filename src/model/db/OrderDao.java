@@ -29,7 +29,7 @@ public class OrderDao {
 	}
 
 	// get user and restaurant from session
-	public void createOrder(User u, Restaurant r) throws SQLException {
+	public long createOrder(User u, Restaurant r) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
 				"insert into orders (user_id,restaurant_id, total_price, order_date) values(?,?,?,now())",
@@ -42,7 +42,10 @@ public class OrderDao {
 
 		ResultSet rs = preparedStatement.getGeneratedKeys();
 		rs.next();
-		u.setId(rs.getLong(1));
+		Long id = rs.getLong(1);
+		u.setId(id);
+
+		return id;
 
 	}
 
@@ -98,6 +101,12 @@ public class OrderDao {
 		}
 		return orders;
 
+	}
+
+	public Order getOrderById(long id) {
+		Connection con = DBManager.getInstance().getConnection();
+		PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM pizza_store.orders where user_id = ?");
+		preparedStatement.setLong(1, user_id);
 	}
 
 }
