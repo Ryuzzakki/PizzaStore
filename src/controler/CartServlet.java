@@ -28,12 +28,13 @@ public class CartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("invoked 1");
 		User currUser = (User) request.getSession().getAttribute("user");
 		Restaurant currRestaurant = (Restaurant) request.getSession().getAttribute("restaurant");
 
 		if (request.getSession().getAttribute("order") == null) {
 			try {
+				System.out.println("invoked2 ");
 				long orderId = OrderDao.getInstance().createOrder(currUser, currRestaurant);
 				Order order = OrderDao.getInstance().getOrderById(orderId);
 				request.getSession().setAttribute("order", order);
@@ -41,23 +42,21 @@ public class CartServlet extends HttpServlet {
 			} catch (UserException | SQLException e) {
 				e.printStackTrace();
 			}
-
-			String id = request.getParameter("productId");
-			try {
-				Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
-				Order order = (Order) request.getSession().getAttribute("order");
-				OrderDetailsDao.getInstance().addProductToOrderDetails(p, order, 1);
-				System.out.println("added " + p.getName());
-				OrderDao.getInstance().updateOrderPrice(p.getPrice(), order.getId());
-				// probably transaction
-				// fix restaurant setting
-			} catch (NumberFormatException | SQLException e) {
-				e.printStackTrace();
-			}
 		}
-
+		String id = request.getParameter("productId");
+		System.out.println("invoked 3");
+		try {
+			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
+			Order order = (Order) request.getSession().getAttribute("order");
+			OrderDetailsDao.getInstance().addProductToOrderDetails(p, order, 1);
+			System.out.println("invoked 4");
+			OrderDao.getInstance().updateOrderPrice(p.getPrice(), order.getId());
+			// probably transaction
+			// fix restaurant setting
+		} catch (NumberFormatException | SQLException e) {
+			e.printStackTrace();
+		}
 		response.sendRedirect("main.jsp");
-
 	}
 
 	@Override
@@ -76,6 +75,5 @@ public class CartServlet extends HttpServlet {
 		}
 		req.setAttribute("productsInCart", map);
 		req.getRequestDispatcher("mycart.jsp").forward(req, resp);
-		System.out.println(map.size());
 	}
 }
