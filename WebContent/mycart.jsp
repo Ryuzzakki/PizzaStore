@@ -31,8 +31,13 @@
 				<td><c:out value="${ product.key.name }"></c:out></td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
 				<td><c:out value="${ product.value }"></c:out></td>
+
 			</tr>
 		</c:forEach>
+
+		<tr>
+			<c:out value="${ sessionScope.order.total_price }"></c:out>
+		</tr>
 	</table>
 
 </body>
