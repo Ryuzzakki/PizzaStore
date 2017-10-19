@@ -54,28 +54,33 @@ public class CartServlet extends HttpServlet {
 		} catch (NumberFormatException | SQLException e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect("main.jsp");
+		request.setAttribute("added", true);
+		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("order") == null) {
-			req.getRequestDispatcher("main.jsp").forward(req, resp);
+			req.getRequestDispatcher("mycart.jsp").forward(req, resp);
 			return;
 		}
 		if (req.getSession().getAttribute("user") == null) {
-			req.getRequestDispatcher("login.jsp").forward(req, resp);
+			req.getRequestDispatcher("mycart.jsp").forward(req, resp);
 			return;
 		}
 		Order order = (Order) req.getSession().getAttribute("order");
 		long orderId = order.getId();
 		HashMap<Product, Integer> map = new HashMap<>();
+		double totalPrice = 0;
 		try {
+			totalPrice = OrderDao.getInstance().getOrderById(orderId).getTotal_price();
 			map = OrderDetailsDao.getInstance().getAllProductsFromOrder(orderId);
-		} catch (SQLException e) {
+		} catch (SQLException | UserException e) {
 			e.printStackTrace();
 		}
-		req.setAttribute("productsInCart", map);
+
+		req.getSession().setAttribute("totalPrice", totalPrice);
+		req.getSession().setAttribute("productsInCart", map);
 		req.getRequestDispatcher("mycart.jsp").forward(req, resp);
 
 	}

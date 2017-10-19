@@ -17,7 +17,14 @@
 		<c:redirect url="login.jsp"></c:redirect>
 	</c:if>
 
+
+
+
 	<jsp:include page="header.jsp"></jsp:include>
+	
+	<c:if test="${ requestScope.added == true }">
+		<h4>Succesfull add to cart!</h4>
+	</c:if>
 
 	<table border="1">
 		<tr>
@@ -31,22 +38,14 @@
 				<td><c:out value="${ product.price } "></c:out></td>
 				<td><img src="productPic"></td>
 				<td><form action="cart" method="post">
-						<input type="hidden" name="productId" value="${ product.id }" /> <input
-							type="submit" name="cart_submit" value="Add to Cart" />
+						<input type="hidden" name="productId" value="${ product.id }" />
+						<input type="submit" name="cart_submit" value="Add to Cart" />
 					</form></td>
 			</tr>
 		</c:forEach>
 	</table>
 
-	<form action="logout" method="post">
-		<input type="submit" value="Logout"><br>
-	</form>
-
-	<form action="cart" method="get">
-		<input type="submit" value="MyCart"><br>
-	</form>
-	<br>
-
+	
 	<form action="avatar" method="post" enctype="multipart/form-data">
 		<input type="file" name="avatar"><br> <input
 			type="submit" value="Upload Avatar"><br>

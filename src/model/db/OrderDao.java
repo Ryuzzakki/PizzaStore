@@ -118,8 +118,8 @@ public class OrderDao {
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
 			order = new Order(orderId, UserDao.getInstance().getUser(userId),
 					RestaurantDao.getInstance().getRestaurant(restorantId), totalPrice, dateTime);
-
 		}
+
 		return order;
 
 	}

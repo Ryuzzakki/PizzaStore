@@ -26,7 +26,7 @@
 			<th>Price</th>
 			<th>Quantity</th>
 		</tr>
-		<c:forEach var="product" items="${requestScope.productsInCart}">
+		<c:forEach var="product" items="${sessionScope.productsInCart}">
 			<tr>
 				<td><c:out value="${ product.key.name }"></c:out></td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
@@ -35,10 +35,14 @@
 			</tr>
 		</c:forEach>
 
-		<tr>
-			<c:out value="${ sessionScope.order.total_price }"></c:out>
-		</tr>
+
 	</table>
+
+	<h2>
+		Total price is :
+		<c:out value="${ sessionScope.totalPrice }"></c:out>
+	</h2>
+
 
 </body>
 </html>
