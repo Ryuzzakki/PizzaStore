@@ -34,7 +34,10 @@ public class CartServlet extends HttpServlet {
 
 		if (request.getSession().getAttribute("order") == null) {
 			try {
-
+				if (currRestaurant == null) {
+					request.getRequestDispatcher("address.jsp").forward(request, response);
+					return;
+				}
 				long orderId = OrderDao.getInstance().createOrder(currUser, currRestaurant);
 				Order order = OrderDao.getInstance().getOrderById(orderId);
 				request.getSession().setAttribute("order", order);
