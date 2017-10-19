@@ -53,7 +53,6 @@
 	</form>
 	<br>
 
-	<img src="avatar">
 
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
