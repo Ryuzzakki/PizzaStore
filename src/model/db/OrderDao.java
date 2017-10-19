@@ -116,7 +116,7 @@ public class OrderDao {
 			long restorantId = set.getLong("restaurant_id");
 			double totalPrice = set.getDouble("total_price");
 			LocalDateTime dateTime = set.getTimestamp("order_date").toLocalDateTime();
-			Order order = new Order(userId, UserDao.getInstance().getUser(userId),
+			order = new Order(orderId, UserDao.getInstance().getUser(userId),
 					RestaurantDao.getInstance().getRestaurant(restorantId), totalPrice, dateTime);
 
 		}

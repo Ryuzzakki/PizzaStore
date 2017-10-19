@@ -30,7 +30,7 @@
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
 				<td><img src="productPic"></td>
-				<td><form action="addtocart" method="post">
+				<td><form action="cart" method="post">
 						<input type="hidden" name="productId" value="${ product.id }" /> <input
 							type="submit" name="cart_submit" value="Add to Cart" />
 					</form></td>
@@ -42,7 +42,7 @@
 		<input type="submit" value="Logout"><br>
 	</form>
 
-	<form action="cart" method="post">
+	<form action="cart" method="get">
 		<input type="submit" value="MyCart"><br>
 	</form>
 	<br>
