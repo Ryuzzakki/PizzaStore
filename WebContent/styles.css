@@ -148,3 +148,16 @@ button.social-signin:active {
 button.social-signin.facebook {
 	background: #32508E;
 }
+.navi{
+	display: inline;
+}
+#avatar{
+	float: right;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}
+.welcome{
+	float: right;
+	margin-right: 10px; 
+}

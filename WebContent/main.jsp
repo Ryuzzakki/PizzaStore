@@ -17,6 +17,8 @@
 		<c:redirect url="login.jsp"></c:redirect>
 	</c:if>
 
+	<jsp:include page="header.jsp"></jsp:include>
+
 	<table border="1">
 		<tr>
 			<th>Name</th>
@@ -53,5 +55,6 @@
 
 	<img src="avatar">
 
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
