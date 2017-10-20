@@ -41,6 +41,7 @@ public class ProductDao {
 			product = new Product(id, productName, productPrice);
 			product.setProductPicture(productPic);
 		}
+		
 		return product;
 	}
 

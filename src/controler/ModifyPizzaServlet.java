@@ -1,11 +1,19 @@
 package controler;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashSet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Ingredient;
+import model.Product;
+import model.db.IngredientDao;
+import model.db.ProductDao;
 
 /**
  * Servlet implementation class ModifyPizzaServlet
@@ -16,18 +24,27 @@ public class ModifyPizzaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String ingredientid = request.getParameter("ingredientId");
 		String currentId = request.getParameter("productId");
-
-		if (currentId != null) {
-
+		Long id = Long.valueOf(currentId);
+		Ingredient ingredient = null;
+		try {
+			Product product = ProductDao.getInstance().getProduct(id);
+			if (request.getSession().getAttribute("modifiedProduct") == null) {
+				request.getSession().setAttribute("modifiedProduct", product);
+			}
+			if (ingredientid != null) {
+				ingredient = IngredientDao.getInstance().getIngredient(Long.valueOf(ingredientid));
+				product = (Product) request.getSession().getAttribute("modifiedProduct");
+				product.addIngredient(ingredient);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-
-		System.out.println(ingredientid);
-		System.out.println(currentId);
-
+		HashSet<Ingredient> ingredients = ((Product) request.getSession().getAttribute("modifiedProduct"))
+				.getIngredients();
+			System.out.println(ingredients.size());
 		response.sendRedirect("modify.jsp?productId=" + currentId);
-		// request.getRequestDispatcher("modify.jsp?productId=" +
-		// currentId).forward(request, response);
 	}
 }

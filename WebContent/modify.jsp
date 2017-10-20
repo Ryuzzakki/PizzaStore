@@ -17,7 +17,7 @@
 			<th>Name</th>
 			<th>Price</th>
 		</tr>
-		<c:set var="currentProduct" value="${param.productId}" scope="session" />
+		<c:set var="currentProduct" value="${param.productId}" scope="page" />
 		
 				<c:forEach items="${applicationScope.ingredients}" var="ingredient">
 			<tr>

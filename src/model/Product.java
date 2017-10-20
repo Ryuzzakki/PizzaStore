@@ -53,6 +53,11 @@ public class Product {
 		this.productPicture = productPicture;
 	}
 
+	public void addIngredient(Ingredient ingredient) {
+		this.ingredients.add(ingredient);
+
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
