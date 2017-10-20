@@ -161,3 +161,7 @@ button.social-signin.facebook {
 	float: right;
 	margin-right: 10px; 
 }
+.myprofile{
+	display: inline;
+	float: right;
+}

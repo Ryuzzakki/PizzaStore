@@ -27,10 +27,17 @@
 		</form>
 
 		<form class="navi" action="cart" method="get">
-			<input type="submit" value="MyCart"><br>
+			<input type="submit" value="MyCart">
 		</form>
+		
+		<form class="right" action="myprofile.jsp">
+			<input type="submit" value="View My profile">
+		</form>
+		
+	
 		<img id="avatar" src="avatar">
 		<h3 class="welcome">Welcome, ${ sessionScope.user.first_name }</h3>
+		
 	</div>
 </body>
 </html>
