@@ -13,14 +13,14 @@
 			<h2>Pizza Store</h2>
 			<h1>Sign up</h1>
 			<form action="register" method="post">
-				<input type="text" name="first_name" placeholder="First name" /> <input
-					type="text" name="last_name" placeholder="Last name" /> <input
-					type="password" name="pass" placeholder="Password" /> <input
-					type="password" name="passconfirm" placeholder="Retype password" />
-				<input type="text" name="email" placeholder="E-mail" /> <input
-					type="text" name="phone" placeholder="Phone" /> <input type="text"
-					name="address" placeholder="Address" /> <input type="submit"
-					name="signup_submit" value="Sign me up" />
+				<input type="text" name="first_name" placeholder="First name" />
+				 <input type="text" name="last_name" placeholder="Last name" />
+				  <input type="password" name="pass" placeholder="Password" /> 
+					<input type="password" name="passconfirm" placeholder="Retype password" />
+				<input type="text" name="email" placeholder="E-mail" />
+				 <input type="text" name="phone" placeholder="Phone" />
+					 <input type="text" name="address" placeholder="Address" /> 
+					<input type="submit" name="signup_submit" value="Sign me up" />
 			</form>
 		</div>
 		<div class="right">

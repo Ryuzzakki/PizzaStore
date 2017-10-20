@@ -16,29 +16,41 @@
 
 
 	<h3>My Profile</h3>
-	<div class="left">
+	<div class="navi">
 
-		<form class="navi" action="about.jsp">
-			<input type="submit" value="About Us">
+		<form class="navi" action="myprofile.jsp">
+			<input type="submit" value="View My profile">
 		</form>
-		<form class="navi" action="contact.jsp">
-			<input type="submit" value="Contacts">
+		<form class="navi" action="orders.jsp">
+			<input type="submit" value="View My orders">
+		</form>
+		<form class="navi" action="ADDaddress.jsp">
+			<input type="submit" value="Addresses">
 		</form>
 		<form class="navi" action="main.jsp">
 			<input type="submit" value="Products">
 		</form>
-		<br> <img id="avatar" src="avatar">
+		</div>
+		
+		
+		<img id="avatar2" src="avatar">
 		<form action="avatar" method="post" enctype="multipart/form-data">
-			<input type="file" name="avatar"><br> <input
-				type="submit" value="Upload Avatar"><br>
+			<input type="file" name="avatar"><br>
+			 <input type="submit" value="Upload Avatar"><br>
 		</form>
-	</div>
+	
 	<div class="right">
-		<form action="login" method="post">
-			<input type="text" name="email" placeholder="E-mail" /> <input
-				type="password" name="pass" placeholder="Password" /> <input
-				type="submit" name="login_submit" value="Login" />
-		</form>
+		<form action="register" method="post">
+				<input type="text" name="first_name" placeholder="First name" />
+				<input type="text" name="last_name" placeholder="Last name" /> 
+				<input type="password" name="pass" placeholder="Password" /> 
+				
+				<input type="password" name="passconfirm" placeholder="Retype password" />
+				<input type="text" name="email" placeholder="E-mail" />
+				<input type="text" name="phone" placeholder="Phone" />
+				<input type="text" name="address" placeholder="Address" />
+				<input type="submit name="signup_submit" value="Sign me up" />
+			</form>
 	</div>
 </body>
 </html>

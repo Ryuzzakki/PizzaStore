@@ -1,6 +1,8 @@
 package model;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 public class User {
 
@@ -12,7 +14,7 @@ public class User {
 	private String email;
 	private String avatarUrl;
 	private HashSet<String> address = new HashSet<>();
-	private HashSet<Order> orders = new HashSet<>();
+	private Set<Order> orders;
 
 	public User(String first_name, String last_name, String password, String phone_number, String email)
 			throws UserException {
@@ -69,8 +71,11 @@ public class User {
 		return address;
 	}
 
-	public HashSet<Order> getOrders() {
-		return orders;
+	public Set<Order> getOrders() {
+		return Collections.unmodifiableSet(orders);
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 
 	public void setId(long id) {
