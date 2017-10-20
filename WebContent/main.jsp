@@ -47,11 +47,7 @@
 	</table>
 
 
-	<form action="avatar" method="post" enctype="multipart/form-data">
-		<input type="file" name="avatar"><br> <input
-			type="submit" value="Upload Avatar"><br>
-	</form>
-	<br>
+	
 
 
 	<jsp:include page="footer.jsp"></jsp:include>
