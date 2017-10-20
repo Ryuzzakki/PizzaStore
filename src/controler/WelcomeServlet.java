@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Ingredient;
 import model.Product;
+import model.db.IngredientDao;
 import model.db.ProductDao;
 
 /**
@@ -29,12 +31,15 @@ public class WelcomeServlet extends HttpServlet {
 		synchronized (application) {
 			if (application.getAttribute("products") == null) {
 				ArrayList<Product> products = new ArrayList<>();
+				ArrayList<Ingredient> ingredients = new ArrayList<>();
 				try {
 					products = ProductDao.getInstance().getAllProducts();
+					ingredients =  IngredientDao.getInstance().getAllIngredients();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 				application.setAttribute("products", products);
+				application.setAttribute("ingredients", ingredients);
 			}
 		}
 

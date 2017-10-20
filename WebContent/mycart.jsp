@@ -40,6 +40,11 @@
 						<input type="number" name="productValue" min="1" max="10" />
 						<input type="submit" name="cart_submit" value="Remove" />
 					</form>
+					
+					<form action="modify" method="post">
+						<input type="hidden" name="productId" value="${ product.key.id }" />
+						<input type="submit" name="cart_submit" value="Modify" />
+					</form>
 				</td>
 
 			</tr>
