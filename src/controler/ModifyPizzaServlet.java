@@ -44,7 +44,10 @@ public class ModifyPizzaServlet extends HttpServlet {
 		}
 		HashSet<Ingredient> ingredients = ((Product) request.getSession().getAttribute("modifiedProduct"))
 				.getIngredients();
-			System.out.println(ingredients.size());
+		
+		System.out.println(ingredients.size());
+		//TODO hashcode stuffs!!! 
+		
 		response.sendRedirect("modify.jsp?productId=" + currentId);
 	}
 }
