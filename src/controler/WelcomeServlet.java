@@ -29,12 +29,12 @@ public class WelcomeServlet extends HttpServlet {
 		// app scope setting all products
 		ServletContext application = getServletConfig().getServletContext();
 		synchronized (application) {
-			if (application.getAttribute("products") == null) {
+			if (application.getAttribute("products") == null || application.getAttribute("ingredients") == null) {
 				ArrayList<Product> products = new ArrayList<>();
 				ArrayList<Ingredient> ingredients = new ArrayList<>();
 				try {
 					products = ProductDao.getInstance().getAllProducts();
-					ingredients =  IngredientDao.getInstance().getAllIngredients();
+					ingredients = IngredientDao.getInstance().getAllIngredients();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

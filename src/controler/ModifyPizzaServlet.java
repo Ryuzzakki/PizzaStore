@@ -17,8 +17,11 @@ public class ModifyPizzaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String ingredientid = request.getParameter("ingredientId");
-		String pizzaId = request.getParameter("productId");
 		System.out.println(ingredientid);
+		
+		
+		String pizzaId = request.getParameter("productId");
+		String currPizzaId = pizzaId;
 		System.out.println(pizzaId);
 		request.getRequestDispatcher("modify.jsp").forward(request, response);
 
