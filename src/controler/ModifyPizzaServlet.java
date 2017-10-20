@@ -17,12 +17,17 @@ public class ModifyPizzaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String ingredientid = request.getParameter("ingredientId");
-		System.out.println(ingredientid);
-		String pizzaId = null;
-		if (request.getParameter("productId") != null) {
-			pizzaId = request.getParameter("productId");
+		String currentId = request.getParameter("productId");
+
+		if (currentId != null) {
+
 		}
-		System.out.println(pizzaId);
-		request.getRequestDispatcher("modify.jsp").forward(request, response);
+
+		System.out.println(ingredientid);
+		System.out.println(currentId);
+
+		response.sendRedirect("modify.jsp?productId=" + currentId);
+		// request.getRequestDispatcher("modify.jsp?productId=" +
+		// currentId).forward(request, response);
 	}
 }

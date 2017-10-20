@@ -17,13 +17,16 @@
 			<th>Name</th>
 			<th>Price</th>
 		</tr>
-		<c:forEach items="${applicationScope.ingredients}" var="ingredient">
+		<c:set var="currentProduct" value="${param.productId}" scope="session" />
+		
+				<c:forEach items="${applicationScope.ingredients}" var="ingredient">
 			<tr>
 				<td><c:out value="${ ingredient.name }"></c:out></td>
 				<td><c:out value="${ ingredient.price } "></c:out></td>
 				
 				<td><form action="modify" method="post">
 						<input type="hidden" name="ingredientId" value="${ ingredient.id }" />
+						<input type="hidden" name="productId" value="${ currentProduct }" />
 						<input type="submit" name="cart_submit" value="Add to Pizza" />
 					</form></td>
 					
