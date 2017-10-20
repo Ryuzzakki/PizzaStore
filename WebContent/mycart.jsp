@@ -25,12 +25,22 @@
 			<th>Name</th>
 			<th>Price</th>
 			<th>Quantity</th>
+			<th></th>
 		</tr>
 		<c:forEach var="product" items="${sessionScope.productsInCart}">
 			<tr>
 				<td><c:out value="${ product.key.name }"></c:out></td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
 				<td><c:out value="${ product.value }"></c:out></td>
+
+				<td>
+					<form>
+						<input type="hidden" name="productId" value="${ product.key.id }" />
+						<input type="hidden" name="productValue" value="${ product.value }" />
+						<input type="number" name="productValue" min="1" max="10" />
+						<input type="submit" name="cart_submit" value="Remove" />
+					</form>
+				</td>
 
 			</tr>
 		</c:forEach>

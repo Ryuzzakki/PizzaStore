@@ -17,10 +17,9 @@
 	<h3>Get from restaurant or delivery?</h3>
 
 	<form action="address" method="post">
-		<input type="radio" id="radio_1" name="address" value="restaurant" />
-		Restaurant <input type="radio" id="radio_2" name="address"
-			value="home" /> Home
-		<button type="submit" value="Submit">Submit</button>
+		<input type="radio" id="radio_1" name="address" value="restaurant" /> Restaurant
+		 <input type="radio" id="radio_2" name="address" value="home" /> Home 
+		 <button type="submit" value="Submit">Submit</button>
 	</form>
 
 </body>

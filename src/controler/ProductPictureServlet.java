@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Product;
 import model.db.ProductDao;
 
 /**
@@ -25,12 +26,11 @@ public class ProductPictureServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// String productId = req.getParameter("id");
-		// somehow get current product picture url from jsp
+		int currProduct = Integer.parseInt(req.getParameter("currProductId"));
 		String pictureUrl = null;
 
 		try {
-			pictureUrl = (ProductDao.getInstance().getProduct(3l)).getProductPicture();
+			pictureUrl = ProductDao.getInstance().getProduct(Long.valueOf(currProduct)).getProductPicture();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

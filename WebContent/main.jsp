@@ -21,10 +21,12 @@
 
 
 	<jsp:include page="header.jsp"></jsp:include>
-	
+
 	<c:if test="${ requestScope.added == true }">
 		<h4>Succesfull add to cart!</h4>
 	</c:if>
+
+
 
 	<table border="1">
 		<tr>
@@ -33,11 +35,9 @@
 		</tr>
 		<c:forEach items="${applicationScope.products}" var="product">
 			<tr>
-
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				
-				<td><img src="productPic"></td>
+				<td><img src="productPic?currProductId=${ product.id }"></td>
 				<td><form action="cart" method="post">
 						<input type="hidden" name="productId" value="${ product.id }" />
 						<input type="submit" name="cart_submit" value="Add to Cart" />
@@ -46,7 +46,7 @@
 		</c:forEach>
 	</table>
 
-	
+
 	<form action="avatar" method="post" enctype="multipart/form-data">
 		<input type="file" name="avatar"><br> <input
 			type="submit" value="Upload Avatar"><br>
