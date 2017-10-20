@@ -38,6 +38,17 @@ public class Order {
 
 	}
 
+	/**
+	 * for creating empty order
+	 * 
+	 */
+	public Order(User user, Restaurant restaurant) {
+		this.user = user;
+		this.restaurant = restaurant;
+		this.total_price = 0;
+
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -68,6 +79,16 @@ public class Order {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public void addToProducts(Product p) {
+		if (products.containsKey(p)) {
+			int quant = products.get(p);
+			products.put(p, quant + 1);
+		} else {
+			this.products.put(p, 1);
+		}
+		this.total_price += p.getPrice();
 	}
 
 }

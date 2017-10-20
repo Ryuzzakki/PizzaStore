@@ -31,27 +31,22 @@ public class CartServlet extends HttpServlet {
 
 		User currUser = (User) request.getSession().getAttribute("user");
 		Restaurant currRestaurant = (Restaurant) request.getSession().getAttribute("restaurant");
-
 		if (request.getSession().getAttribute("order") == null) {
-			try {
-				if (currRestaurant == null) {
-					request.getRequestDispatcher("address.jsp").forward(request, response);
-					return;
-				}
-				long orderId = OrderDao.getInstance().createOrder(currUser, currRestaurant);
-				Order order = OrderDao.getInstance().getOrderById(orderId);
-				request.getSession().setAttribute("order", order);
-
-			} catch (UserException | SQLException e) {
-				e.printStackTrace();
+			if (currRestaurant == null) {
+				request.getRequestDispatcher("address.jsp").forward(request, response);
+				return;
 			}
+			// long orderId = OrderDao.getInstance().createOrder(currUser, currRestaurant);
+			// Order order = OrderDao.getInstance().getOrderById(orderId);
+			Order order = new Order(currUser, currRestaurant);
+			request.getSession().setAttribute("order", order);
 		}
 		String id = request.getParameter("productId");
 		try {
-			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
 			Order order = (Order) request.getSession().getAttribute("order");
-			OrderDetailsDao.getInstance().addProductToOrderDetails(p, order, 1);
-			OrderDao.getInstance().calculatePrice(order.getId());
+			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
+			order.addToProducts(p);
+			// OrderDao.getInstance().calculatePrice(order.getId());
 			// probably transaction
 			// fix restaurant setting
 		} catch (NumberFormatException | SQLException e) {
@@ -64,24 +59,17 @@ public class CartServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getSession().getAttribute("order") == null) {
-			req.getRequestDispatcher("mycart.jsp").forward(req, resp);
-			return;
-		}
-		if (req.getSession().getAttribute("user") == null) {
-			req.getRequestDispatcher("mycart.jsp").forward(req, resp);
+			req.getRequestDispatcher("main.jsp").forward(req, resp);
+			// TODO fix
 			return;
 		}
 		Order order = (Order) req.getSession().getAttribute("order");
-		long orderId = order.getId();
-		HashMap<Product, Integer> map = new HashMap<>();
-		double totalPrice = 0;
-		try {
-			totalPrice = OrderDao.getInstance().getOrderById(orderId).getTotal_price();
-			map = OrderDetailsDao.getInstance().getAllProductsFromOrder(orderId);
-		} catch (SQLException | UserException e) {
-			e.printStackTrace();
+		if (req.getSession().getAttribute("user") == null) {
+			req.getRequestDispatcher("main.jsp").forward(req, resp);
+			return;
 		}
-
+		HashMap<Product, Integer> map = order.getProducts();
+		double totalPrice = order.getTotal_price();
 		req.getSession().setAttribute("totalPrice", totalPrice);
 		req.getSession().setAttribute("productsInCart", map);
 		req.getRequestDispatcher("mycart.jsp").forward(req, resp);
