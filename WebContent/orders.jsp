@@ -15,7 +15,7 @@
 	<h2>Your previous orders:</h2>
 	
 		<c:forEach items="${ sessionScope.orders }" var="order">
-			<h4>${ order.datetime }</h4>
+			<h4>${ order.order_date }</h4>
 			<table border="1">
 			<c:forEach items="${ order.products }" var="productEntry">
 				<tr>
