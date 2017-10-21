@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Ingredient;
 import model.Product;
+import model.User;
 import model.UserException;
 import model.db.IngredientDao;
 import model.db.OrderDao;
@@ -51,7 +52,6 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			if (UserDao.getInstance().userExists(email, pass)) {
-
 				request.getSession().setAttribute("logged", true);
 				request.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(email));
 				request.getRequestDispatcher("address.jsp").forward(request, response);

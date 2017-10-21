@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 
+import model.Order;
 import model.Product;
 import model.User;
 import model.UserException;
@@ -157,7 +158,8 @@ public class UserDao {
 			String avatarUrl = set.getString("avatarUrl");
 			user = new User(userId, firstName, lastName, password, phone, email);
 			user.setAvatarUrl(avatarUrl);
-
+			HashSet<Order> orders = OrderDao.getInstance().getAllOrders(user.getId());
+			user.setOrders(orders);
 		}
 		return user;
 

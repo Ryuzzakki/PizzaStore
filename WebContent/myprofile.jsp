@@ -21,7 +21,7 @@
 		<form class="navi" action="myprofile.jsp">
 			<input type="submit" value="View My profile">
 		</form>
-		<form class="navi" action="orders" method="post">
+		<form class="navi" action="orders.jsp">
 			<input type="submit" value="View My orders">
 		</form>
 		added something to test

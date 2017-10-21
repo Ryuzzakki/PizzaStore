@@ -19,7 +19,7 @@ import model.UserException;
 import model.db.OrderDao;
 import model.db.ProductDao;
 
-@WebServlet("/orders")
+@WebServlet("/sortOrders")
 public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,6 @@ public class OrderServlet extends HttpServlet {
 			return;
 		}
 		User u = (User) o;
-		Set<Order> orders = (Set<Order>) request.getAttribute("orders");
 
 		TreeSet<Order> set = new TreeSet<>(new Comparator<Order>() {
 			@Override
@@ -44,32 +43,33 @@ public class OrderServlet extends HttpServlet {
 				}
 			}
 		});
-		set.addAll(orders);
+		set.addAll(u.getOrders());
 		u.setOrders(set);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		Object o = request.getSession().getAttribute("user");
-		if (o == null) {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-			return;
-		}
-		User u = (User) o;
-		long id = u.getId();
-
-		try {
-			HashSet<Order> orders = OrderDao.getInstance().getAllOrders(id);
-			System.out.println("tuk1");
-			request.getSession().setAttribute("orders", orders);
-			System.out.println("tuk2");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (UserException e) {
-			e.printStackTrace();
-		}
 		request.getRequestDispatcher("orders.jsp").forward(request, response);
-		System.out.println("tuk3");
 	}
+
+//	@Override
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		Object o = request.getSession().getAttribute("user");
+//		if (o == null) {
+//			request.getRequestDispatcher("login.jsp").forward(request, response);
+//			return;
+//		}
+//		User u = (User) o;
+//		long id = u.getId();
+//
+//		try {
+//			HashSet<Order> orders = OrderDao.getInstance().getAllOrders(id);
+//			System.out.println("tuk1");
+//			request.getSession().setAttribute("orders", orders);
+//			System.out.println("tuk2");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (UserException e) {
+//			e.printStackTrace();
+//		}
+//		request.getRequestDispatcher("orders.jsp").forward(request, response);
+//		System.out.println("tuk3");
+//	}
 }

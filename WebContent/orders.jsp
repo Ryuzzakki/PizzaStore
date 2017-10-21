@@ -14,7 +14,10 @@
 		
 	<h2>Your previous orders:</h2>
 	
-		<c:forEach items="${ sessionScope.orders }" var="order">
+	<a href="sortOrders?sort=desc"><button>Newest to oldest</button></a>
+	<a href="sortOrders?sort=asc"><button>Oldest to newest</button></a>
+	
+		<c:forEach items="${ sessionScope.user.orders }" var="order">
 			<h4>${ order.order_date }</h4>
 			<table border="1">
 			<c:forEach items="${ order.products }" var="productEntry">
