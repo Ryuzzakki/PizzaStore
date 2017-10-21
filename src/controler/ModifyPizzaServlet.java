@@ -31,23 +31,23 @@ public class ModifyPizzaServlet extends HttpServlet {
 		Ingredient ingredient = null;
 		try {
 			Product product = ProductDao.getInstance().getProduct(id);
-			if (request.getSession().getAttribute("modifiedProduct") == null) {
-				request.getSession().setAttribute("modifiedProduct", product);
+			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
+				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}
 			if (ingredientid != null) {
 				ingredient = IngredientDao.getInstance().getIngredient(Long.valueOf(ingredientid));
-				product = (Product) request.getSession().getAttribute("modifiedProduct");
+				product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
 				product.addIngredient(ingredient);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		HashSet<Ingredient> ingredients = ((Product) request.getSession().getAttribute("modifiedProduct"))
+		HashSet<Ingredient> ingredients = ((Product) request.getSession().getAttribute("modifiedProduct" + currentId))
 				.getIngredients();
-		
+
 		System.out.println(ingredients.size());
-		//TODO hashcode stuffs!!! 
-		
+		// TODO hashcode stuffs!!!
+
 		response.sendRedirect("modify.jsp?productId=" + currentId);
 	}
 }
