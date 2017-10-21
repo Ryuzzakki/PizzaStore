@@ -56,7 +56,7 @@ public class OrderServlet extends HttpServlet {
 			}
 		});
 		set.addAll(u.getOrders());
-		u.setOrders(set);
+		u.setOrders(set); 
 		request.getRequestDispatcher("orders.jsp").forward(request, response);
 	}
 
