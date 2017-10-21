@@ -43,7 +43,7 @@ public class RecipeDao {
 	public void addIngredientToRecipe(long ingredient_id, long product_id) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("INSERT INTO FROM pizza_store.recipe (product_id, ingredient_id) VALUES (?, ?)");
+				.prepareStatement("INSERT INTO pizza_store.recipe (product_id, ingredient_id) VALUES (?, ?)");
 
 		preparedStatement.setLong(1, product_id);
 		preparedStatement.setLong(2, ingredient_id);

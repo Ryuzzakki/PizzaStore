@@ -91,4 +91,14 @@ public class Order {
 		this.total_price += p.getPrice();
 	}
 
+	public Product findProductInMap(long id) {
+		for (Product p : products.keySet()) {
+			if (p.getId() == id) {
+				return p;
+			}
+
+		}
+		return null;
+	}
+
 }

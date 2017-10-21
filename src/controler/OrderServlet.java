@@ -24,6 +24,7 @@ import model.Order;
 import model.Product;
 import model.Restaurant;
 import model.User;
+import model.UserException;
 import model.db.IngredientDao;
 import model.db.OrderDao;
 import model.db.OrderDetailsDao;
@@ -67,18 +68,18 @@ public class OrderServlet extends HttpServlet {
 		HashMap<Product, Integer> map = order.getProducts();
 
 		try {
-			OrderDao.getInstance().createOrder(u, r);
-			System.out.println("Adding order");
+			long orderId = OrderDao.getInstance().createOrder(u, r);
+			Order newOrderInDB = OrderDao.getInstance().getOrderById(orderId);
 			for (Product p : map.keySet()) {
-				System.out.println("Adding product");
-				OrderDetailsDao.getInstance().addProductToOrderDetails(p, order, map.get(p));
+				p.getIngredients().size();
+				OrderDetailsDao.getInstance().addProductToOrderDetails(p, newOrderInDB, map.get(p));
 				for (Ingredient ing : p.getIngredients()) {
-					System.out.println("Adding ingredient");
 					RecipeDao.getInstance().addIngredientToRecipe(ing.getId(), p.getId());
 				}
 			}
-		} catch (SQLException e) {
-			e.getMessage();
+		} catch (SQLException | UserException e) {
+			e.printStackTrace();
 		}
+
 	}
 }

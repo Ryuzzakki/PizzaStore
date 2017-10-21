@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Ingredient;
+import model.Order;
 import model.Product;
 import model.db.IngredientDao;
 import model.db.ProductDao;
@@ -27,11 +28,12 @@ public class ModifyPizzaServlet extends HttpServlet {
 
 		String ingredientid = request.getParameter("ingredientId");
 		String currentId = request.getParameter("productId");
+		Order order = (Order) request.getSession().getAttribute("order");
 
 		Long id = Long.valueOf(currentId);
 		Ingredient ingredient = null;
 		try {
-			Product product = ProductDao.getInstance().getProduct(id);
+			Product product = order.findProductInMap(id);
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
 				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}
@@ -43,7 +45,7 @@ public class ModifyPizzaServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		// TODO hashcode stuffs!!!
 		request.setAttribute("currentId", currentId);
 		response.sendRedirect("modify.jsp?productId=" + currentId);
