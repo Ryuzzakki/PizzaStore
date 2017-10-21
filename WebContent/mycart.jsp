@@ -23,6 +23,7 @@
 	<table border="1">
 		<tr>
 			<th>Name</th>
+			<th>Ingredients</th>
 			<th>Price</th>
 			<th>Quantity</th>
 			<th></th>
@@ -30,6 +31,11 @@
 		<c:forEach var="product" items="${sessionScope.productsInCart}">
 			<tr>
 				<td><c:out value="${ product.key.name }"></c:out></td>
+				<td>
+				<c:forEach var="ingredient" items="${product.key.ingredients}">
+						<td><c:out value="${ingredient.name }"></c:out></td>
+				</c:forEach>
+				</td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
 				<td><c:out value="${ product.value }"></c:out></td>
 
