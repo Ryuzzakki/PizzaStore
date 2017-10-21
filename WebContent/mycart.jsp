@@ -46,15 +46,15 @@
 							<input type="submit" name="cart_submit" value="Modify" />
 					</form>
 						</c:if>
-					
-
 				</td>
-
 			</tr>
+			
 		</c:forEach>
-
-
 	</table>
+	
+	<form action="sortOrders" method="post">
+			<input type="submit" name="cart_submit" value="Make Order!" />
+	</form>
 
 	<h2>
 		Total price is :

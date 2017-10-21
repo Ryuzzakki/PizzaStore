@@ -27,6 +27,7 @@
 					<td>${productEntry.key.name }</td>
 					<td>${productEntry.value }</td>
 				</tr>
+				
 			</c:forEach>
 			</table>
 			<hr>

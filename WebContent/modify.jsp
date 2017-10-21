@@ -51,13 +51,6 @@
 		<br> <input type="submit" name="pizzaSpecials"	value="Choose Pizza">
 	</form>
 	
-	
-	
-	<%String id = (String)request.getAttribute("currentProduct");
-	Product product =(Product) request.getSession().getAttribute("modifiedProduct" + id );%>
-
-	<%=id %>
-
 
 
 </body>

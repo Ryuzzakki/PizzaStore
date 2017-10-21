@@ -46,6 +46,9 @@ public class CartServlet extends HttpServlet {
 			Order order = (Order) request.getSession().getAttribute("order");
 			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
 			order.addToProducts(p);
+			System.out.println("Add Product To Order!");
+			System.out.println(order.getProducts().size());
+			System.out.println("hi");
 			// OrderDao.getInstance().calculatePrice(order.getId());
 			// probably transaction
 			// fix restaurant setting

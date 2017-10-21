@@ -45,7 +45,7 @@ public class ModifyPizzaServlet extends HttpServlet {
 		}
 		
 		// TODO hashcode stuffs!!!
-
+		request.setAttribute("currentId", currentId);
 		response.sendRedirect("modify.jsp?productId=" + currentId);
 	}
 }
