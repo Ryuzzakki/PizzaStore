@@ -9,6 +9,9 @@ public class Product {
 	private double price;
 	private HashSet<Ingredient> ingredients = new HashSet<>();
 	private String productPicture;
+	private boolean isPizza = false;
+	private String size;
+	private String dough;
 
 	public Product(String name, double price) {
 		this.name = name;
@@ -19,6 +22,15 @@ public class Product {
 		this.id = id;
 		this.name = name;
 		this.price = price;
+	}
+
+	public Product(long id, String name, double price, boolean isPizza, String size, String dough) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.isPizza = isPizza;
+		this.size = size;
+		this.dough = dough;
 	}
 
 	public String getName() {
@@ -56,6 +68,26 @@ public class Product {
 	public void addIngredient(Ingredient ingredient) {
 		this.ingredients.add(ingredient);
 
+	}
+
+	public boolean getPizza() {
+		return isPizza;
+	}
+
+	public String getDough() {
+		return dough;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public void setDough(String dough) {
+		this.dough = dough;
 	}
 
 	@Override

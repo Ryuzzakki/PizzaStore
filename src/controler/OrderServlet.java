@@ -15,9 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Order;
 import model.User;
-import model.UserException;
-import model.db.OrderDao;
-import model.db.ProductDao;
 
 @WebServlet("/sortOrders")
 public class OrderServlet extends HttpServlet {

@@ -38,10 +38,13 @@ public class ProductDao {
 			String productName = set.getString("name");
 			double productPrice = set.getDouble("price");
 			String productPic = set.getString("pictureUrl");
-			product = new Product(id, productName, productPrice);
+			boolean isPizza = set.getBoolean("isPizza");
+			String dough = set.getString("dough");
+			String size = set.getString("size");
+			product = new Product(id, productName, productPrice, isPizza, size, dough);
 			product.setProductPicture(productPic);
 		}
-		
+
 		return product;
 	}
 

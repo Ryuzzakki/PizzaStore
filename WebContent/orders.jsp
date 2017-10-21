@@ -12,6 +12,8 @@
 			<c:redirect url="login.jsp"></c:redirect>
 		</c:if>
 		
+		<jsp:include page="header.jsp"></jsp:include>
+		
 	<h2>Your previous orders:</h2>
 	
 	<a href="sortOrders?sort=desc"><button>Newest to oldest</button></a>
@@ -22,7 +24,7 @@
 			<table border="1">
 			<c:forEach items="${ order.products }" var="productEntry">
 				<tr>
-					<td>${productEntry.key }</td>
+					<td>${productEntry.key.name }</td>
 					<td>${productEntry.value }</td>
 				</tr>
 			</c:forEach>

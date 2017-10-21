@@ -2,7 +2,6 @@ package controler;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.HashSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,42 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Ingredient;
 import model.Product;
-import model.db.IngredientDao;
 import model.db.ProductDao;
 
 /**
- * Servlet implementation class ModifyPizzaServlet
+ * Servlet implementation class PizzaFormServlet
  */
-@WebServlet("/modify")
-public class ModifyPizzaServlet extends HttpServlet {
+@WebServlet("/chooser")
+public class PizzaFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String ingredientid = request.getParameter("ingredientId");
 		String currentId = request.getParameter("productId");
-
-		Long id = Long.valueOf(currentId);
-		Ingredient ingredient = null;
+		String size = request.getParameter("size");
+		String dough = request.getParameter("dough");
 		try {
-			Product product = ProductDao.getInstance().getProduct(id);
+			Product product = ProductDao.getInstance().getProduct(Long.valueOf(currentId));
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
 				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}
-			if (ingredientid != null) {
-				ingredient = IngredientDao.getInstance().getIngredient(Long.valueOf(ingredientid));
-				product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
-				product.addIngredient(ingredient);
-			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
-		
-		// TODO hashcode stuffs!!!
-
+		Product product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
+		product.setSize(size);
+		product.setDough(dough);
 		response.sendRedirect("modify.jsp?productId=" + currentId);
+
 	}
+
 }
