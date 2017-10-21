@@ -94,7 +94,15 @@ public class Product {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dough == null) ? 0 : dough.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
+		result = prime * result + (isPizza ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((size == null) ? 0 : size.hashCode());
 		return result;
 	}
 
@@ -107,10 +115,31 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
+		if (dough == null) {
+			if (other.dough != null)
+				return false;
+		} else if (!dough.equals(other.dough))
+			return false;
+		if (id != other.id)
+			return false;
+		if (ingredients == null) {
+			if (other.ingredients != null)
+				return false;
+		} else if (!ingredients.equals(other.ingredients))
+			return false;
+		if (isPizza != other.isPizza)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (size == null) {
+			if (other.size != null)
+				return false;
+		} else if (!size.equals(other.size))
 			return false;
 		return true;
 	}

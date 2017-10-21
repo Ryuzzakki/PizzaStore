@@ -24,11 +24,12 @@ public class RecipeDao {
 		return instance;
 	}
 
-	public HashSet<Ingredient> getAllIngredientsFromRecipe(long product_id) throws SQLException {
+	public HashSet<Ingredient> getAllIngredientsFromRecipe(long order_id, long product_id) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("SELECT * FROM pizza_store.recipe where product_id = ?");
+				.prepareStatement("SELECT * FROM pizza_store.recipe where product_id = ? and order_id = ? ");
 		preparedStatement.setLong(1, product_id);
+		preparedStatement.setLong(2, order_id);
 		HashSet<Ingredient> ingredients = new HashSet<>();
 		ResultSet set = preparedStatement.executeQuery();
 		while (set.next()) {
@@ -40,13 +41,13 @@ public class RecipeDao {
 
 	}
 
-	public void addIngredientToRecipe(long ingredient_id, long product_id) throws SQLException {
+	public void addIngredientToRecipe(long order_id, long ingredient_id, long product_id) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("INSERT INTO pizza_store.recipe (product_id, ingredient_id) VALUES (?, ?)");
-
-		preparedStatement.setLong(1, product_id);
-		preparedStatement.setLong(2, ingredient_id);
+				.prepareStatement("INSERT INTO pizza_store.recipe (order_id,product_id, ingredient_id) VALUES (?,?, ?)");
+		preparedStatement.setLong(1, order_id);
+		preparedStatement.setLong(2, product_id);
+		preparedStatement.setLong(3, ingredient_id);
 		preparedStatement.executeUpdate();
 	}
 

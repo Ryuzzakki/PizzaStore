@@ -71,10 +71,9 @@ public class OrderServlet extends HttpServlet {
 			long orderId = OrderDao.getInstance().createOrder(u, r);
 			Order newOrderInDB = OrderDao.getInstance().getOrderById(orderId);
 			for (Product p : map.keySet()) {
-				p.getIngredients().size();
 				OrderDetailsDao.getInstance().addProductToOrderDetails(p, newOrderInDB, map.get(p));
 				for (Ingredient ing : p.getIngredients()) {
-					RecipeDao.getInstance().addIngredientToRecipe(ing.getId(), p.getId());
+					RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(),ing.getId(), p.getId());
 				}
 			}
 		} catch (SQLException | UserException e) {
