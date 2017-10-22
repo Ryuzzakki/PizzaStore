@@ -56,7 +56,7 @@ public class OrderServlet extends HttpServlet {
 			}
 		});
 		set.addAll(u.getOrders());
-		u.setOrders(set); 
+		u.setOrders(set);
 		request.getRequestDispatcher("orders.jsp").forward(request, response);
 	}
 
@@ -66,19 +66,23 @@ public class OrderServlet extends HttpServlet {
 		User u = (User) req.getSession().getAttribute("user");
 		Restaurant r = (Restaurant) req.getSession().getAttribute("restaurant");
 		HashMap<Product, Integer> map = order.getProducts();
-
-		try {
-			long orderId = OrderDao.getInstance().createOrder(u, r);
-			Order newOrderInDB = OrderDao.getInstance().getOrderById(orderId);
-			for (Product p : map.keySet()) {
-				OrderDetailsDao.getInstance().addProductToOrderDetails(p, newOrderInDB, map.get(p));
-				for (Ingredient ing : p.getIngredients()) {
-					RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(),ing.getId(), p.getId());
+		if (map.size() != 0) {
+			try {
+				long orderId = OrderDao.getInstance().createOrder(u, r);
+				Order newOrderInDB = OrderDao.getInstance().getOrderById(orderId);
+				for (Product p : map.keySet()) {
+					OrderDetailsDao.getInstance().addProductToOrderDetails(p, newOrderInDB, map.get(p));
+					for (Ingredient ing : p.getIngredients()) {
+						RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p.getId());
+					}
 				}
+				//invalidate
+			} catch (SQLException | UserException e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException | UserException e) {
-			e.printStackTrace();
+		}else {
+			req.getRequestDispatcher("main.jsp").forward(req, resp);
+			
 		}
-
 	}
 }

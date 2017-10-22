@@ -36,8 +36,6 @@ public class CartServlet extends HttpServlet {
 				request.getRequestDispatcher("address.jsp").forward(request, response);
 				return;
 			}
-			// long orderId = OrderDao.getInstance().createOrder(currUser, currRestaurant);
-			// Order order = OrderDao.getInstance().getOrderById(orderId);
 			Order order = new Order(currUser, currRestaurant);
 			request.getSession().setAttribute("order", order);
 		}

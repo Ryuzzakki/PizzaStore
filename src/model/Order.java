@@ -101,4 +101,21 @@ public class Order {
 		return null;
 	}
 
+	public void removeProductFromOrder(long id, int quanitity) {
+		for (Product p : products.keySet()) {
+			if (p.getId() == id) {
+				if (products.get(p) == quanitity) {
+					products.remove(p);
+					this.total_price -= p.getPrice() * quanitity;
+					return;
+				} else {
+					products.put(p, products.get(p) - quanitity);
+					this.total_price -= p.getPrice() * quanitity;
+					return;
+				}
+
+			}
+		}
+	}
+
 }

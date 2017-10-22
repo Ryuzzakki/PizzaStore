@@ -40,10 +40,11 @@
 				<td><c:out value="${ product.value }"></c:out></td>
 
 				<td>
-					<form>
+					<form action="remove" method="post">
 						<input type="hidden" name="productId" value="${ product.key.id }" />
-						<input type="hidden" name="productValue" value="${ product.value }" />
-						<input type="number" name="productValue" min="1" max="10" />
+						<input type="hidden" name="currProductIngredients" value="${ {product.key.ingredients }" />
+						<input type="hidden" name="currProductValue" value="${ product.value }" />
+						<input type="number" name="productValue" min="1" max="${ product.value }" />
 						<input type="submit" name="cart_submit" value="Remove" />
 					</form>
 						<c:if test="${ product.key.pizza == true }">

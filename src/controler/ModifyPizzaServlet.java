@@ -30,10 +30,13 @@ public class ModifyPizzaServlet extends HttpServlet {
 		String currentId = request.getParameter("productId");
 		Order order = (Order) request.getSession().getAttribute("order");
 
+
 		Long id = Long.valueOf(currentId);
 		Ingredient ingredient = null;
 		try {
 			Product product = order.findProductInMap(id);
+			
+			//needs better way
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
 				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}
