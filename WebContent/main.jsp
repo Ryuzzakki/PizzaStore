@@ -25,6 +25,11 @@
 	<c:if test="${ requestScope.added == true }">
 		<h4>Succesfull add to cart!</h4>
 	</c:if>
+	
+	
+	<c:if test="${ requestScope.order == true }">
+		<h4>Succesfull order!</h4>
+	</c:if>
 
 
 

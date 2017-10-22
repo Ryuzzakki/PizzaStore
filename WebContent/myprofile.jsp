@@ -15,7 +15,7 @@
 	</c:if>
 
 
-	<h3>My Profile</h3>
+	<h3>Welcome ${sessionScope.user.first_name}</h3>
 	<div class="navi">
 
 		<form class="navi" action="myprofile.jsp">
@@ -39,18 +39,6 @@
 			 <input type="submit" value="Upload Avatar"><br>
 		</form>
 	
-	<div class="right">
-		<form action="register" method="post">
-				<input type="text" name="first_name" placeholder="First name" />
-				<input type="text" name="last_name" placeholder="Last name" /> 
-				<input type="password" name="pass" placeholder="Password" /> 
-				
-				<input type="password" name="passconfirm" placeholder="Retype password" />
-				<input type="text" name="email" placeholder="E-mail" />
-				<input type="text" name="phone" placeholder="Phone" />
-				<input type="text" name="address" placeholder="Address" />
-				<input type="submit name="signup_submit" value="Sign me up" />
-			</form>
-	</div>
+	
 </body>
 </html>

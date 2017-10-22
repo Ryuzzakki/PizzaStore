@@ -41,12 +41,13 @@
 
 				<td>
 					<form action="remove" method="post">
+					
 						<input type="hidden" name="productId" value="${ product.key.id }" />
 						<input type="hidden" name="currProductValue" value="${ product.value }" />
 						<input type="number" name="productValue" min="1" max="${ product.value }" />
 						<input type="submit" name="cart_submit" value="Remove" />
 					</form>
-						<c:if test="${ product.key.pizza == true }">
+						<c:if test="${ product.key.pizza == true  }">
 							<form action="modify" method="post">
 							<input type="hidden" name="productId" value="${ product.key.id }" />
 							<input type="submit" name="cart_submit" value="Modify" />

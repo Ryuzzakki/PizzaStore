@@ -30,6 +30,7 @@ import model.db.OrderDao;
 import model.db.OrderDetailsDao;
 import model.db.ProductDao;
 import model.db.RecipeDao;
+import model.db.UserDao;
 
 @WebServlet("/sortOrders")
 public class OrderServlet extends HttpServlet {
@@ -76,13 +77,16 @@ public class OrderServlet extends HttpServlet {
 						RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p.getId());
 					}
 				}
-				//invalidate
+				req.getSession().setAttribute("order", new Order(u, r));
+				req.getSession().setAttribute("user", UserDao.getInstance().getUserByEmail(u.getEmail()));
+				req.setAttribute("order", true);
+				req.getRequestDispatcher("main.jsp").forward(req, resp);
 			} catch (SQLException | UserException e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			req.getRequestDispatcher("main.jsp").forward(req, resp);
-			
+
 		}
 	}
 }

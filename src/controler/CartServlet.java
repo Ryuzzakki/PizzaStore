@@ -43,7 +43,6 @@ public class CartServlet extends HttpServlet {
 		try {
 			Order order = (Order) request.getSession().getAttribute("order");
 			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
-			System.out.println(p.hashCode());
 			order.addToProducts(p);
 
 			// OrderDao.getInstance().calculatePrice(order.getId());
