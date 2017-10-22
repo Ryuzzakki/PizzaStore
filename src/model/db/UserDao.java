@@ -70,11 +70,11 @@ public class UserDao {
 
 	}
 
-	public void removeAddressForUser(long id) throws SQLException {
+	public void removeAddressForUser(String location) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
-		PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM pizza_store.user_address WHERE id=?");
+		PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM pizza_store.user_address WHERE location=?");
 
-		preparedStatement.setLong(1, id);
+		preparedStatement.setString(1, location);
 		preparedStatement.executeUpdate();
 
 	}
@@ -160,6 +160,8 @@ public class UserDao {
 			user.setAvatarUrl(avatarUrl);
 			HashSet<Order> orders = OrderDao.getInstance().getAllOrders(user.getId());
 			user.setOrders(orders);
+			HashSet<String> address = UserDao.getInstance().getAllAdrress(userId);
+			user.setAddresses(address);
 		}
 		return user;
 

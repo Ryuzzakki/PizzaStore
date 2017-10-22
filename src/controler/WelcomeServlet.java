@@ -44,7 +44,7 @@ public class WelcomeServlet extends HttpServlet {
 		}
 
 		boolean logged = false;
-
+		//TODO See this
 		if (request.getSession().getAttribute("logged") != null) {
 			logged = (boolean) request.getSession().getAttribute("logged");
 		}

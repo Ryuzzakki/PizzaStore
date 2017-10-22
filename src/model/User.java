@@ -14,6 +14,7 @@ public class User {
 	private String email;
 	private String avatarUrl;
 	private HashSet<String> address = new HashSet<>();
+	private String currentAddress;
 	private Set<Order> orders;
 
 	public User(String first_name, String last_name, String password, String phone_number, String email)
@@ -21,9 +22,8 @@ public class User {
 		setFirstName(first_name);
 		setLastName(last_name);
 		setPassword(password);
-		setEmail(email);
 		setNumber(phone_number);
-
+		setEmail(email);
 	}
 
 	public User(long id, String first_name, String last_name, String password, String phone_number, String email)
@@ -77,7 +77,11 @@ public class User {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
+	public void setAddresses(HashSet<String> addresses) {
+		this.address = addresses;
+	}
 
+	
 	public void setId(long id) {
 		this.id = id;
 	}

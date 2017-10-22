@@ -24,8 +24,7 @@
 		<form class="navi" action="orders.jsp">
 			<input type="submit" value="View My orders">
 		</form>
-		added something to test
-		<form class="navi" action="ADDaddress.jsp">
+		<form class="navi" action="profileaddress.jsp">
 			<input type="submit" value="Addresses">
 		</form>
 		<form class="navi" action="main.jsp">

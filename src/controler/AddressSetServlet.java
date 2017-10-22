@@ -25,7 +25,7 @@ public class AddressSetServlet extends HttpServlet {
 
 		String choice = request.getParameter("address");
 		request.getSession().setAttribute("address", choice);
-
+		//TODO See this
 		try {
 			Restaurant defaultRest = RestaurantDao.getInstance().getRestaurant(1);
 			request.getSession().setAttribute("restaurant", defaultRest);
