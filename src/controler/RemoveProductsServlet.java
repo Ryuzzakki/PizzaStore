@@ -35,13 +35,6 @@ public class RemoveProductsServlet extends HttpServlet {
 		order.removeProductFromOrder(Long.valueOf(productId), Integer.valueOf(valueToBeRemoved));
 		double totalPrice = order.getTotal_price();
 
-		for (Product p : order.getProducts().keySet()) {
-			System.out.println(p.getName());
-			System.out.println(p.getId());
-			for (Ingredient i : p.getIngredients()) {
-				System.out.println(i.getName());
-			}
-		}
 
 		request.getSession().setAttribute("totalPrice", totalPrice);
 		request.getRequestDispatcher("mycart.jsp").forward(request, response);
