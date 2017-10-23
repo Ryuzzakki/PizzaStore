@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Order {
 	//
-	private static long count = 1;
+	private static long count = 20;
 	//
 	private long id;
 	private User user;
@@ -91,14 +91,13 @@ public class Order {
 		//  set random id
 			
 					
-			p.setId(count);
+			p.setId(count++);
 			products.put(p, 1);
 			System.out.println("adding product" + p.getId());
 		} else {
 			this.products.put(p, 1);
 		}
 		this.total_price += p.getPrice();
-		count++;
 	}
 
 	public Product findProductInMap(long id) {
