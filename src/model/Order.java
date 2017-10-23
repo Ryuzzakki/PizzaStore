@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Order {
 
@@ -85,8 +86,10 @@ public class Order {
 		if (products.containsKey(p)) {
 		//	int quant = products.get(p);
 		//	products.put(p, quant + 1);
-			p.setId(p.getId()+1);
+		//  set random id
+			p.setId(new Random().nextInt(9999));
 			products.put(p, 1);
+			System.out.println("adding product" + p.getId());
 		} else {
 			this.products.put(p, 1);
 		}
