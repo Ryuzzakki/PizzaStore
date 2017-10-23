@@ -87,7 +87,7 @@ public class Order {
 		//	int quant = products.get(p);
 		//	products.put(p, quant + 1);
 		//  set random id
-			p.setId(new Random().nextInt(9999));
+			p.setId(new Random().nextInt(99999));
 			products.put(p, 1);
 			System.out.println("adding product" + p.getId());
 		} else {
