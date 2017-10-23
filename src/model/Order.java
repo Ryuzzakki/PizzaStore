@@ -85,13 +85,14 @@ public class Order {
 	}
 
 	public void addToProducts(Product p) {
+		p.setId(count++);
 		if (products.containsKey(p)) {
-		//	int quant = products.get(p);
-		//	products.put(p, quant + 1);
+			int quant = products.get(p);
+			products.put(p, quant + 1);
 		//  set random id
 			
 					
-			p.setId(count++);
+			
 			products.put(p, 1);
 			System.out.println("adding product" + p.getId());
 		} else {
