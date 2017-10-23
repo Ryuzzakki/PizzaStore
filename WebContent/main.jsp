@@ -23,12 +23,12 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<c:if test="${ requestScope.added == true }">
-		<h4>Succesfull add to cart!</h4>
+		<h4>Successfull add to cart!</h4>
 	</c:if>
 	
 	
 	<c:if test="${ requestScope.order == true }">
-		<h4>Succesfull order!</h4>
+		<h4>Successfull order!</h4>
 	</c:if>
 
 
@@ -42,7 +42,7 @@
 			<tr>
 				<td><c:out value="${ product.name }"></c:out></td>
 				<td><c:out value="${ product.price } "></c:out></td>
-				<td><img src="productPic?currProductId=${ product.id }"></td>
+				<td><img src="productPic?currProductId=${ product.id }" width="50%" height="auto"></td>
 				<td><form action="cart" method="post">
 						<input type="hidden" name="productId" value="${ product.id }" />
 						<input type="submit" name="cart_submit" value="Add to Cart" />

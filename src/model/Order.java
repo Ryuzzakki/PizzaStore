@@ -104,9 +104,6 @@ public class Order {
 
 	public void removeProductFromOrder(long id, int quanitity) {
 		for (Product p : products.keySet()) {
-			System.out.println(p);
-			System.out.println(products);
-			System.out.println(products.get(p));
 			if (p.getId() == id) {
 				if (products.get(p) == quanitity) {
 					products.remove(p);

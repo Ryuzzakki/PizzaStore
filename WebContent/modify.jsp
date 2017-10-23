@@ -79,7 +79,7 @@
 					<td><c:out value="${ product.key.dough }"></c:out></td>
 					<td><c:out value="${ product.key.size }"></c:out></td>
 					<td><c:forEach var="ingredient" items="${product.key.ingredients}">
-						<c:out value="${ingredient.name }"></c:out><br>
+						<c:out value="${ingredient.name}"></c:out><br>
 
 				</c:forEach>
 					</td>
