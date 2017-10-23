@@ -83,8 +83,10 @@ public class Order {
 
 	public void addToProducts(Product p) {
 		if (products.containsKey(p)) {
-			int quant = products.get(p);
-			products.put(p, quant + 1);
+		//	int quant = products.get(p);
+		//	products.put(p, quant + 1);
+			p.setId(p.getId()+1);
+			products.put(p, 1);
 		} else {
 			this.products.put(p, 1);
 		}
