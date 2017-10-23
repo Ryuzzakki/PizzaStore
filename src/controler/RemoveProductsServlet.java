@@ -24,7 +24,7 @@ public class RemoveProductsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String productId = request.getParameter("productId");
-		String valueToBeRemoved = request.getParameter("1");
+		String valueToBeRemoved = "1";
 		//String valueToBeRemoved = request.getParameter("productValue");
 		//zakodeno!
 		
