@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Order {
-
+	//
+	private static long count = 1;
+	//
 	private long id;
 	private User user;
 	private Restaurant restaurant;
@@ -87,13 +89,16 @@ public class Order {
 		//	int quant = products.get(p);
 		//	products.put(p, quant + 1);
 		//  set random id
-			p.setId(new Random().nextInt(99999));
+			
+					
+			p.setId(count);
 			products.put(p, 1);
 			System.out.println("adding product" + p.getId());
 		} else {
 			this.products.put(p, 1);
 		}
 		this.total_price += p.getPrice();
+		count++;
 	}
 
 	public Product findProductInMap(long id) {
