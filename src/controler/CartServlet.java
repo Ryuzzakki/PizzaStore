@@ -43,6 +43,9 @@ public class CartServlet extends HttpServlet {
 		try {
 			Order order = (Order) request.getSession().getAttribute("order");
 			Product p = ProductDao.getInstance().getProduct(Long.parseLong(id));
+			//if order has product in map with same id
+			//change product id
+			//then add
 			order.addToProducts(p);
 
 			// OrderDao.getInstance().calculatePrice(order.getId());
