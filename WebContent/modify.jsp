@@ -14,6 +14,7 @@
 
 	<div>
 		<table border="1" style="float: left;">
+		<h3>Choose Ingredients:</h3>
 			<tr>
 				<th>Name</th>
 				<th>Price</th>
@@ -46,7 +47,7 @@
 	
 	
 	<div style="float: left;" >
-			<h1>Choose type of Pizza:</h1><br>
+			<h3>Choose type of Pizza:</h3>
 		<form action="chooser" method="post">
 			Select size of Pizza: <select name="size">
 				<option value="small">Small</option>
@@ -64,8 +65,9 @@
 	
 	<div>
 		<table border="1" style="float: left; ">
-			<h1>Current Pizza:</h1>
+			<h3>Current Pizza:</h3>
 			<c:forEach items="${sessionScope.order.products}" var="product">
+				<c:if test="${product.key.id == param.productId}" >
 			<tr>
 				<th>Name</th>
 				<th>Dough</th>
@@ -83,6 +85,7 @@
 					</td>
 					
 				</tr>
+				</c:if>
 			</c:forEach>
 		</table>
 	</div>
