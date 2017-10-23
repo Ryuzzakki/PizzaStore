@@ -47,7 +47,6 @@ public class CartServlet extends HttpServlet {
 			//change product id
 			//then add
 			order.addToProducts(p);
-
 			// OrderDao.getInstance().calculatePrice(order.getId());
 			// probably transaction
 			// fix restaurant setting
