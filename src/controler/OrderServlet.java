@@ -74,7 +74,7 @@ public class OrderServlet extends HttpServlet {
 				for (Product p : map.keySet()) {
 					OrderDetailsDao.getInstance().addProductToOrderDetails(p, newOrderInDB, map.get(p));
 					for (Ingredient ing : p.getIngredients()) {
-						RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p.getId());
+						RecipeDao.getInstance().addIngredientToRecipe(newOrderInDB.getId(), ing.getId(), p);
 					}
 				}
 				req.getSession().setAttribute("order", new Order(u, r));

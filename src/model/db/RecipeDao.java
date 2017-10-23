@@ -41,12 +41,12 @@ public class RecipeDao {
 
 	}
 
-	public void addIngredientToRecipe(long order_id, long ingredient_id, long product_id) throws SQLException {
+	public void addIngredientToRecipe(long order_id, long ingredient_id, Product p) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con
-				.prepareStatement("INSERT INTO pizza_store.recipe (order_id,product_id, ingredient_id) VALUES (?,?, ?)");
+				.prepareStatement("INSERT INTO pizza_store.recipe (order_id, product_id, ingredient_id) VALUES (?,(SELECT id FROM pizza_store.products WHERE name = ?), ?)");
 		preparedStatement.setLong(1, order_id);
-		preparedStatement.setLong(2, product_id);
+		preparedStatement.setString(2, p.getName());
 		preparedStatement.setLong(3, ingredient_id);
 		preparedStatement.executeUpdate();
 	}

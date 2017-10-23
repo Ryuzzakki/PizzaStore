@@ -28,11 +28,12 @@ public class OrderDetailsDao {
 	public void addProductToOrderDetails(Product product, Order order, int quantity) throws SQLException {
 		Connection con = DBManager.getInstance().getConnection();
 		PreparedStatement preparedStatement = con.prepareStatement(
-				"INSERT INTO pizza_store.order_details (order_id, product_id, quantity) VALUES (?, ?, ?);",
+				"INSERT INTO pizza_store.order_details (order_id, product_id, quantity) "
+				+ "VALUES(?, (SELECT id FROM pizza_store.products WHERE name = ?),? );",
 				Statement.RETURN_GENERATED_KEYS);
 
 		preparedStatement.setLong(1, order.getId());
-		preparedStatement.setLong(2, product.getId());
+		preparedStatement.setString(2, product.getName());
 		preparedStatement.setLong(3, quantity);
 		preparedStatement.executeUpdate();
 
