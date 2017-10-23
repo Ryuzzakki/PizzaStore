@@ -92,6 +92,7 @@ public class Order {
 	}
 
 	public Product findProductInMap(long id) {
+		System.out.println(products);
 		for (Product p : products.keySet()) {
 			if (p.getId() == id) {
 				return p;
@@ -103,6 +104,9 @@ public class Order {
 
 	public void removeProductFromOrder(long id, int quanitity) {
 		for (Product p : products.keySet()) {
+			System.out.println(p);
+			System.out.println(products);
+			System.out.println(products.get(p));
 			if (p.getId() == id) {
 				if (products.get(p) == quanitity) {
 					products.remove(p);

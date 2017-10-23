@@ -32,9 +32,12 @@ public class ModifyPizzaServlet extends HttpServlet {
 
 		Long id = Long.valueOf(currentId);
 		Ingredient ingredient = null;
+
 		try {
 			Product product = order.findProductInMap(id);
 			// needs better way
+			// need to find current product to modify in order map by something!!!
+			// very hard
 			if (request.getSession().getAttribute("modifiedProduct" + currentId) == null) {
 				request.getSession().setAttribute("modifiedProduct" + currentId, product);
 			}

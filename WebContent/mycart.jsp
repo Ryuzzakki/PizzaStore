@@ -33,7 +33,8 @@
 				<td><c:out value="${ product.key.name }"></c:out></td>
 				<td>
 				<c:forEach var="ingredient" items="${product.key.ingredients}">
-						<td><c:out value="${ingredient.name }"></c:out></td>
+						<c:out value="${ingredient.name }"></c:out><br>
+
 				</c:forEach>
 				</td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
@@ -53,6 +54,8 @@
 							<input type="submit" name="cart_submit" value="Modify" />
 					</form>
 						</c:if>
+						
+						
 				</td>
 			</tr>
 			

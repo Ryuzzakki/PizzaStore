@@ -31,7 +31,7 @@ public class RemoveProductsServlet extends HttpServlet {
 			return;
 		}
 		Order order = (Order) request.getSession().getAttribute("order");
-
+		
 		order.removeProductFromOrder(Long.valueOf(productId), Integer.valueOf(valueToBeRemoved));
 		double totalPrice = order.getTotal_price();
 
