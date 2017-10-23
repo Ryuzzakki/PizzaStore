@@ -25,7 +25,7 @@
 			<th>Name</th>
 			<th>Ingredients</th>
 			<th>Price</th>
-			<th>Quantity</th>
+			<!-- <th>Quantity</th> -->
 			<th>Options</th>
 		</tr>
 		<c:forEach var="product" items="${sessionScope.productsInCart}">
@@ -38,7 +38,8 @@
 				</c:forEach>
 				</td>
 				<td><c:out value="${ product.key.price }"></c:out></td>
-				<td><c:out value="${ product.value }"></c:out></td>
+				
+					<!-- <td><c:out value="${ product.value }"></c:out></td> -->
 
 				<td>
 					<form action="remove" method="post">
