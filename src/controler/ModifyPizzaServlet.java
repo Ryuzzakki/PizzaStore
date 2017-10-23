@@ -44,6 +44,7 @@ public class ModifyPizzaServlet extends HttpServlet {
 			if (ingredientid != null) {
 				ingredient = IngredientDao.getInstance().getIngredient(Long.valueOf(ingredientid));
 				product = (Product) request.getSession().getAttribute("modifiedProduct" + currentId);
+				System.out.println(product);
 				product.addIngredient(ingredient);
 			}
 		} catch (SQLException e) {

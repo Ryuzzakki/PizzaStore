@@ -22,12 +22,19 @@
 		<c:forEach items="${ sessionScope.user.orders }" var="order">
 			<h4>${ order.order_date }</h4>
 			<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Dough</th>
+				<th>Size</th>
+				<th>Quantity</th>
+			</tr>
 			<c:forEach items="${ order.products }" var="productEntry">
 				<tr>
 					<td>${productEntry.key.name }</td>
+					<td>${productEntry.key.dough }</td>
+					<td>${productEntry.key.size }</td>
 					<td>${productEntry.value }</td>
 				</tr>
-				
 			</c:forEach>
 			</table>
 			<hr>

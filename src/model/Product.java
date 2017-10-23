@@ -70,6 +70,12 @@ public class Product {
 
 	}
 
+	public void removeIngredient(Ingredient ingredient) {
+		if (this.ingredients.contains(ingredient)) {
+			this.ingredients.remove(ingredient);
+		}
+	}
+
 	public boolean getPizza() {
 		return isPizza;
 	}
@@ -141,5 +147,4 @@ public class Product {
 		return true;
 	}
 
-	
 }

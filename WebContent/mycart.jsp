@@ -26,7 +26,7 @@
 			<th>Ingredients</th>
 			<th>Price</th>
 			<th>Quantity</th>
-			<th></th>
+			<th>Options</th>
 		</tr>
 		<c:forEach var="product" items="${sessionScope.productsInCart}">
 			<tr>
