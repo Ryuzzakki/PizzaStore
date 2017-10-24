@@ -50,7 +50,8 @@ public class AvatarServlet extends HttpServlet {
 		try {
 			UserDao.getInstance().insertAvatar(user.getEmail(), avatarUrl);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			request.getRequestDispatcher("error.jsp").forward(request, resp);
+			return;
 		}
 		request.getRequestDispatcher("main.jsp").forward(request, resp);
 
@@ -61,7 +62,6 @@ public class AvatarServlet extends HttpServlet {
 		User u = (User) req.getSession().getAttribute("user");
 
 		String avatar = u.getAvatarUrl();
-		// fix
 
 		if (avatar == null) {
 			avatar = "default.jpeg";
